@@ -5,7 +5,7 @@ namespace Dnetix\MasterPass\Exception;
 /**
  * Base class for all runtime exceptions thrown by SDK.
  * This class extends RuntimeException of java. All subclasses used in SDK for
- * runtime exceptions will extend this base class
+ * runtime exceptions will extend this base class.
  */
 class SDKBaseException extends \RuntimeException
 {
@@ -17,5 +17,4 @@ class SDKBaseException extends \RuntimeException
     {
         parent::__construct($errorMessage);
     }
-
 }

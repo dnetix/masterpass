@@ -1,8 +1,8 @@
 <?php
 
 namespace Dnetix\MasterPass\Interceptor;
+
 use Dnetix\MasterPass\Helper\Logger;
-use DOMDocument;
 use GuzzleHttp\Psr7\Response;
 
 /**
@@ -10,25 +10,24 @@ use GuzzleHttp\Psr7\Response;
  **/
 class MasterCardSDKLoggingInterceptor
 {
-
-    const REQUEST_HEADERS = "Request Headers: ";
-    const RESPONSE_STATUS = "Response Status: ";
-    const REQUEST_INFO = "Request Information  ";
-    const RESPONSE_INFO = "Response Information  ";
-    const RESPONSE_REASON = "Response: ";
-    const RESPONSE_BODY = "Response Body: ";
-    const XML = "XML";
+    public const REQUEST_HEADERS = 'Request Headers: ';
+    public const RESPONSE_STATUS = 'Response Status: ';
+    public const REQUEST_INFO = 'Request Information  ';
+    public const RESPONSE_INFO = 'Response Information  ';
+    public const RESPONSE_REASON = 'Response: ';
+    public const RESPONSE_BODY = 'Response Body: ';
+    public const XML = 'XML';
 
     /**
-     * To generate request log string and print request log
+     * To generate request log string and print request log.
      **/
     public static function requestLog($url, $headers, $result)
     {
         $headerString = '';
         foreach ($headers as $key => $value) {
-            $headerString .= $key . ": " . $value . ";\r\n";
+            $headerString .= $key . ': ' . $value . ";\r\n";
         }
-        $requestString = MasterCardSDKLoggingInterceptor::REQUEST_INFO . "\r\n" . $url . "\r\n" . $headerString;
+        $requestString = self::REQUEST_INFO . "\r\n" . $url . "\r\n" . $headerString;
 
         if ($result != '') {
             $requestString .= $result;
@@ -37,11 +36,11 @@ class MasterCardSDKLoggingInterceptor
     }
 
     /**
-     * To generate response log string and print response log
+     * To generate response log string and print response log.
      **/
     public static function responseLog($url, $result)
     {
-        $responseString = MasterCardSDKLoggingInterceptor::RESPONSE_INFO . "\r\n" . $url . "\r\n";
+        $responseString = self::RESPONSE_INFO . "\r\n" . $url . "\r\n";
 
         if ($result != '') {
             if (is_object($result)) {
@@ -56,5 +55,4 @@ class MasterCardSDKLoggingInterceptor
 
         Logger::getLogger()->debug($responseString);
     }
-
 }

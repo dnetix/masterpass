@@ -12,50 +12,48 @@ use Exception;
  **/
 class MasterCardSignatureInterceptor
 {
+    public const AMP = '&';
+    public const QUESTION = '?';
+    public const EMPTY_STRING = '';
+    public const EQUALS = '=';
+    public const DOUBLE_QUOTE = '"';
+    public const COMMA = ',';
+    public const ENCODED_TILDE = '%7E';
+    public const TILDE = '~';
+    public const COLON = ':';
+    public const SPACE = ' ';
 
-    const AMP = "&";
-    const QUESTION = "?";
-    const EMPTY_STRING = "";
-    const EQUALS = "=";
-    const DOUBLE_QUOTE = '"';
-    const COMMA = ',';
-    const ENCODED_TILDE = '%7E';
-    const TILDE = '~';
-    const COLON = ':';
-    const SPACE = ' ';
-
-    const UTF_8 = 'UTF-8';
-    const V1 = 'v1';
-    const OAUTH_START_STRING = 'OAuth ';
-    const REALM = 'realm';
-    const ACCEPT = 'Accept';
-    const CONTENT_TYPE = 'Content-Type';
-    const AUTHORIZATION = 'Authorization';
-    const SSL_CA_CER_PATH_LOCATION = '/SSLCerts/EnTrust/cacert.pem';
-    const PKEY = 'pkey';
-    const SHA1 = "SHA1";
-    const OAUTH_BODY_HASH = "oauth_body_hash";
+    public const UTF_8 = 'UTF-8';
+    public const V1 = 'v1';
+    public const OAUTH_START_STRING = 'OAuth ';
+    public const REALM = 'realm';
+    public const ACCEPT = 'Accept';
+    public const CONTENT_TYPE = 'Content-Type';
+    public const AUTHORIZATION = 'Authorization';
+    public const SSL_CA_CER_PATH_LOCATION = '/SSLCerts/EnTrust/cacert.pem';
+    public const PKEY = 'pkey';
+    public const SHA1 = 'SHA1';
+    public const OAUTH_BODY_HASH = 'oauth_body_hash';
 
     // Signature Base String
-    const OAUTH_SIGNATURE = "oauth_signature";
-    const OAUTH_CONSUMER_KEY = 'oauth_consumer_key';
-    const OAUTH_NONCE = 'oauth_nonce';
-    const SIGNATURE_METHOD = 'oauth_signature_method';
-    const OAUTH_TIMESTAMP = 'oauth_timestamp';
-    const OAUTH_CALLBACK = "oauth_callback";
-    const OAUTH_SIGNATURE_METHOD = 'oauth_signature_method';
-    const OAUTH_VERSION = 'oauth_version';
+    public const OAUTH_SIGNATURE = 'oauth_signature';
+    public const OAUTH_CONSUMER_KEY = 'oauth_consumer_key';
+    public const OAUTH_NONCE = 'oauth_nonce';
+    public const SIGNATURE_METHOD = 'oauth_signature_method';
+    public const OAUTH_TIMESTAMP = 'oauth_timestamp';
+    public const OAUTH_CALLBACK = 'oauth_callback';
+    public const OAUTH_SIGNATURE_METHOD = 'oauth_signature_method';
+    public const OAUTH_VERSION = 'oauth_version';
 
-    const version = '1.0';
-    const signatureMethod = 'RSA-SHA1';
-    const realmValue = "eWallet";
-    const AUTH_HEADER_INFO = "Authorization header added in the request.";
+    public const version = '1.0';
+    public const signatureMethod = 'RSA-SHA1';
+    public const realmValue = 'eWallet';
+    public const AUTH_HEADER_INFO = 'Authorization header added in the request.';
 
     public $signatureBaseString;
     public $authHeader;
     public static $configApiVal;
     private $privateKey;
-
 
     public function __construct()
     {
@@ -63,7 +61,7 @@ class MasterCardSignatureInterceptor
     }
 
     /**
-     * Function to send oauth headers to attach it to http requestMethod
+     * Function to send oauth headers to attach it to http requestMethod.
      * @param $url
      * @param $method
      * @param $result
@@ -77,9 +75,9 @@ class MasterCardSignatureInterceptor
         $reqContentType = $serviceRequest->getContentType();
         $body = $serviceRequest->getRequestBody();
 
-        $params = array();
+        $params = [];
         if (!empty($body)) {
-            $params[MasterCardSignatureInterceptor::OAUTH_BODY_HASH] = MasterCardSignatureInterceptor::generateBodyHash($result);
+            $params[self::OAUTH_BODY_HASH] = self::generateBodyHash($result);
         }
 
         if (!empty($reqHeaders)) {
@@ -89,16 +87,15 @@ class MasterCardSignatureInterceptor
         }
 
         $headers = [
-            MasterCardSignatureInterceptor::CONTENT_TYPE => $reqContentType,
-            MasterCardSignatureInterceptor::AUTHORIZATION => self::buildAuthHeaderString($params, $url, $method, $result, $config),
+            self::CONTENT_TYPE => $reqContentType,
+            self::AUTHORIZATION => self::buildAuthHeaderString($params, $url, $method, $result, $config),
         ];
 
         return $headers;
-
     }
 
     /**
-     * Method to generate the body hash
+     * Method to generate the body hash.
      */
     protected static function generateBodyHash($body)
     {
@@ -120,14 +117,15 @@ class MasterCardSignatureInterceptor
     }
 
     /**
-     * Builds a Auth Header used in connection to MasterPass services
+     * Builds a Auth Header used in connection to MasterPass services.
      */
     private static function buildAuthHeaderString($params, $url, $requestMethod, $body, $config)
     {
-
         if (!empty($params)) {
             $params = array_merge(self::OAuthParametersFactory($config), $params);
-        } else $params = self::OAuthParametersFactory($config);
+        } else {
+            $params = self::OAuthParametersFactory($config);
+        }
 
         $privateKey = $config->privateKey;
 
@@ -137,14 +135,14 @@ class MasterCardSignatureInterceptor
             throw new SDKOauthException($e);
         }
 
-        $params[MasterCardSignatureInterceptor::OAUTH_SIGNATURE] = $signature;
+        $params[self::OAUTH_SIGNATURE] = $signature;
 
-        $params[MasterCardSignatureInterceptor::REALM] = MasterCardSignatureInterceptor::realmValue;
+        $params[self::REALM] = self::realmValue;
 
-        $startString = MasterCardSignatureInterceptor::OAUTH_START_STRING;
+        $startString = self::OAUTH_START_STRING;
 
         foreach ($params as $key => $value) {
-            $startString = $startString . $key . MasterCardSignatureInterceptor::EQUALS . MasterCardSignatureInterceptor::DOUBLE_QUOTE . self::RFC3986urlencode($value) . MasterCardSignatureInterceptor::DOUBLE_QUOTE . MasterCardSignatureInterceptor::COMMA;
+            $startString = $startString . $key . self::EQUALS . self::DOUBLE_QUOTE . self::RFC3986urlencode($value) . self::DOUBLE_QUOTE . self::COMMA;
         }
 
         $authHeader = substr($startString, 0, strlen($startString) - 1);
@@ -152,7 +150,7 @@ class MasterCardSignatureInterceptor
     }
 
     /**
-     * Method to generate base string and generate the signature
+     * Method to generate base string and generate the signature.
      */
     private static function generateAndSignSignature($params, $url, $requestMethod, $privateKey, $body)
     {
@@ -162,7 +160,7 @@ class MasterCardSignatureInterceptor
     }
 
     /**
-     * Method to sign string
+     * Method to sign string.
      */
     private static function sign($string, $privateKey)
     {
@@ -172,7 +170,7 @@ class MasterCardSignatureInterceptor
     }
 
     /**
-     * Method to generate the signature base string
+     * Method to generate the signature base string.
      */
     private static function generateBaseString($params, $url, $requestMethod)
     {
@@ -182,21 +180,21 @@ class MasterCardSignatureInterceptor
 
         $params = self::parseUrlParameters($urlMap, $params);
 
-        $baseString = strtoupper($requestMethod) . MasterCardSignatureInterceptor::AMP . self::RFC3986urlencode($url) . MasterCardSignatureInterceptor::AMP;
+        $baseString = strtoupper($requestMethod) . self::AMP . self::RFC3986urlencode($url) . self::AMP;
         ksort($params);
 
-        $parameters = MasterCardSignatureInterceptor::EMPTY_STRING;
+        $parameters = self::EMPTY_STRING;
         foreach ($params as $key => $value) {
-            $parameters = $parameters . $key . MasterCardSignatureInterceptor::EQUALS . self::RFC3986urlencode($value) . MasterCardSignatureInterceptor::AMP;
+            $parameters = $parameters . $key . self::EQUALS . self::RFC3986urlencode($value) . self::AMP;
         }
         $parameters = self::RFC3986urlencode(substr($parameters, 0, strlen($parameters) - 1));
         return $baseString . $parameters;
     }
 
     /**
-     * Method to extract the URL parameters and add them to the params array
+     * Method to extract the URL parameters and add them to the params array.
      */
-    static function parseUrlParameters($urlMap, $params)
+    public static function parseUrlParameters($urlMap, $params)
     {
         if (empty($urlMap['query'])) {
             return $params;
@@ -211,9 +209,9 @@ class MasterCardSignatureInterceptor
     }
 
     /**
-     * Method to format the URL that is included in the signature base string
+     * Method to format the URL that is included in the signature base string.
      */
-    static function formatUrl($url, $params)
+    public static function formatUrl($url, $params)
     {
         if (!parse_url($url)) {
             return $url;
@@ -222,32 +220,31 @@ class MasterCardSignatureInterceptor
         return $urlMap['scheme'] . '://' . $urlMap['host'] . $urlMap['path'];
     }
 
-
     /**
      * URLEncoder that conforms to the RFC3986 spec.
      */
-    static function RFC3986urlencode($string)
+    public static function RFC3986urlencode($string)
     {
         if ($string === false) {
             return $string;
         } else {
-            return str_replace(MasterCardSignatureInterceptor::ENCODED_TILDE, MasterCardSignatureInterceptor::TILDE, rawurlencode($string));
+            return str_replace(self::ENCODED_TILDE, self::TILDE, rawurlencode($string));
         }
     }
 
     /**
-     * Method to create all default parameters used in the base string and auth header
+     * Method to create all default parameters used in the base string and auth header.
      */
     protected static function OAuthParametersFactory($config)
     {
         $nonce = self::generateNonce(16);
         $time = time();
         $params = [
-            MasterCardSignatureInterceptor::OAUTH_CONSUMER_KEY => $config->consumerKey,
-            MasterCardSignatureInterceptor::OAUTH_SIGNATURE_METHOD => MasterCardSignatureInterceptor::signatureMethod,
-            MasterCardSignatureInterceptor::OAUTH_NONCE => $nonce,
-            MasterCardSignatureInterceptor::OAUTH_TIMESTAMP => $time,
-            MasterCardSignatureInterceptor::OAUTH_VERSION => MasterCardSignatureInterceptor::version,
+            self::OAUTH_CONSUMER_KEY => $config->consumerKey,
+            self::OAUTH_SIGNATURE_METHOD => self::signatureMethod,
+            self::OAUTH_NONCE => $nonce,
+            self::OAUTH_TIMESTAMP => $time,
+            self::OAUTH_VERSION => self::version,
         ];
 
         return $params;

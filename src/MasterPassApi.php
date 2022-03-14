@@ -19,9 +19,8 @@ use Dnetix\MasterPass\Services\ShoppingCartApi;
 
 class MasterPassApi
 {
-
     /**
-     * Request a new oauth token in order to use later on
+     * Request a new oauth token in order to use later on.
      * @param string $callbackUrl
      * @return RequestTokenResponse
      */
@@ -49,7 +48,7 @@ class MasterPassApi
     }
 
     /**
-     * Receives the values from the checkout information and retrieves a token to show the information
+     * Receives the values from the checkout information and retrieves a token to show the information.
      * @param string $requestToken
      * @param string $verifierToken
      * @return AccessTokenResponse
@@ -60,7 +59,7 @@ class MasterPassApi
     }
 
     /**
-     * Reports the state of the transaction used with MasterPass
+     * Reports the state of the transaction used with MasterPass.
      * @param MerchantTransactions $merchantTransactions
      * @return MerchantTransactions
      */
@@ -76,8 +75,9 @@ class MasterPassApi
      */
     public function retrieveInformation($checkoutUrl, $accessToken)
     {
-        if (!preg_match('/\/(\d+)$/', $checkoutUrl, $matches))
+        if (!preg_match('/\/(\d+)$/', $checkoutUrl, $matches)) {
             return null;
+        }
 
         $checkoutId = $matches[1];
 
@@ -93,7 +93,4 @@ class MasterPassApi
     {
         return MasterCardApiConfig::scriptUrl();
     }
-
 }
-
-

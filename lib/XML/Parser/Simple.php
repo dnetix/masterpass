@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * XML_Parser
+ * XML_Parser.
  *
  * XML Parser's Simple parser class
  *
@@ -39,7 +39,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  XML
- * @package   XML_Parser
  * @author    Stephan Schmidt <schst@php.net>
  * @copyright 2004-2008 Stephan Schmidt <schst@php.net>
  * @license   http://opensource.org/licenses/bsd-license New BSD License
@@ -48,7 +47,7 @@
  */
 
 /**
- * built on XML_Parser
+ * built on XML_Parser.
  */
 require_once 'XML/Parser.php';
 
@@ -86,7 +85,6 @@ require_once 'XML/Parser.php';
  * </code>
  *
  * @category  XML
- * @package   XML_Parser
  * @author    Stephan Schmidt <schst@php.net>
  * @copyright 2004-2008 The PHP Group
  * @license   http://opensource.org/licenses/bsd-license New BSD License
@@ -96,41 +94,38 @@ require_once 'XML/Parser.php';
 class XML_Parser_Simple extends XML_Parser
 {
     /**
-     * element stack
+     * element stack.
      *
-     * @access   private
      * @var      array
      */
-    var $_elStack = array();
+    public $_elStack = [];
 
     /**
-     * all character data
+     * all character data.
      *
-     * @access   private
      * @var      array
      */
-    var $_data = array();
+    public $_data = [];
 
     /**
-     * element depth
+     * element depth.
      *
-     * @access   private
-     * @var      integer
+     * @var      int
      */
-    var $_depth = 0;
+    public $_depth = 0;
 
     /**
      * Mapping from expat handler function to class method.
      *
      * @var  array
      */
-    var $handler = array(
+    public $handler = [
         'default_handler'                   => 'defaultHandler',
         'processing_instruction_handler'    => 'piHandler',
         'unparsed_entity_decl_handler'      => 'unparsedHandler',
         'notation_decl_handler'             => 'notationHandler',
-        'external_entity_ref_handler'       => 'entityrefHandler'
-    );
+        'external_entity_ref_handler'       => 'entityrefHandler',
+    ];
 
     /**
      * Creates an XML parser.
@@ -145,32 +140,36 @@ class XML_Parser_Simple extends XML_Parser
      *                       named after elements (handleElement_$name())
      * @param string $tgtenc a valid target encoding
      */
-    function __construct($srcenc = null, $mode = 'event', $tgtenc = null)
+    public function __construct($srcenc = null, $mode = 'event', $tgtenc = null)
     {
         parent::__construct($srcenc, $mode, $tgtenc);
     }
 
     /**
-     * inits the handlers
+     * inits the handlers.
      *
      * @return mixed
-     * @access private
      */
-    function _initHandlers()
+    public function _initHandlers()
     {
         if (!is_object($this->_handlerObj)) {
             $this->_handlerObj = $this;
         }
 
         if ($this->mode != 'func' && $this->mode != 'event') {
-            return $this->raiseError('Unsupported mode given',
-                XML_PARSER_ERROR_UNSUPPORTED_MODE);
+            return $this->raiseError(
+                'Unsupported mode given',
+                XML_PARSER_ERROR_UNSUPPORTED_MODE
+            );
         }
         xml_set_object($this->parser, $this->_handlerObj);
 
-        xml_set_element_handler($this->parser, array($this, 'startHandler'),
-            array($this, 'endHandler'));
-        xml_set_character_data_handler($this->parser, array($this, 'cdataHandler'));
+        xml_set_element_handler(
+            $this->parser,
+            [$this, 'startHandler'],
+            [$this, 'endHandler']
+        );
+        xml_set_character_data_handler($this->parser, [$this, 'cdataHandler']);
 
         /**
          * set additional handlers for character data, entities, etc.
@@ -189,14 +188,13 @@ class XML_Parser_Simple extends XML_Parser
      * This allows you to use one parser instance
      * to parse multiple XML documents.
      *
-     * @access   public
-     * @return   boolean|object     true on success, PEAR_Error otherwise
+     * @return   bool|object     true on success, PEAR_Error otherwise
      */
-    function reset()
+    public function reset()
     {
-        $this->_elStack = array();
-        $this->_data    = array();
-        $this->_depth   = 0;
+        $this->_elStack = [];
+        $this->_data = [];
+        $this->_depth = 0;
 
         $result = $this->_create();
         if ($this->isError($result)) {
@@ -206,7 +204,7 @@ class XML_Parser_Simple extends XML_Parser
     }
 
     /**
-     * start handler
+     * start handler.
      *
      * Pushes attributes and tagname onto a stack
      *
@@ -215,21 +213,20 @@ class XML_Parser_Simple extends XML_Parser
      * @param array    &$attribs attributes
      *
      * @return mixed
-     * @access private
      * @final
      */
-    function startHandler($xp, $elem, &$attribs)
+    public function startHandler($xp, $elem, &$attribs)
     {
-        array_push($this->_elStack, array(
+        array_push($this->_elStack, [
             'name'    => $elem,
-            'attribs' => $attribs
-        ));
+            'attribs' => $attribs,
+        ]);
         $this->_depth++;
         $this->_data[$this->_depth] = '';
     }
 
     /**
-     * end handler
+     * end handler.
      *
      * Pulls attributes and tagname from a stack
      *
@@ -237,12 +234,11 @@ class XML_Parser_Simple extends XML_Parser
      * @param string   $elem element name
      *
      * @return mixed
-     * @access private
      * @final
      */
-    function endHandler($xp, $elem)
+    public function endHandler($xp, $elem)
     {
-        $el   = array_pop($this->_elStack);
+        $el = array_pop($this->_elStack);
         $data = $this->_data[$this->_depth];
         $this->_depth--;
 
@@ -252,34 +248,37 @@ class XML_Parser_Simple extends XML_Parser
             break;
         case 'func':
             $func = 'handleElement_' . $elem;
-            if (strchr($func, '.')) {
+            if (strstr($func, '.')) {
                 $func = str_replace('.', '_', $func);
             }
             if (method_exists($this->_handlerObj, $func)) {
-                call_user_func(array($this->_handlerObj, $func),
-                    $el['name'], $el['attribs'], $data);
+                call_user_func(
+                    [$this->_handlerObj, $func],
+                    $el['name'],
+                    $el['attribs'],
+                    $data
+                );
             }
             break;
         }
     }
 
     /**
-     * handle character data
+     * handle character data.
      *
      * @param resource $xp   xml parser resource
      * @param string   $data data
      *
      * @return void
-     * @access private
      * @final
      */
-    function cdataHandler($xp, $data)
+    public function cdataHandler($xp, $data)
     {
         $this->_data[$this->_depth] .= $data;
     }
 
     /**
-     * handle a tag
+     * handle a tag.
      *
      * Implement this in your parser
      *
@@ -288,22 +287,20 @@ class XML_Parser_Simple extends XML_Parser
      * @param string $data    character data
      *
      * @return void
-     * @access public
      * @abstract
      */
-    function handleElement($name, $attribs, $data)
+    public function handleElement($name, $attribs, $data)
     {
     }
 
     /**
-     * get the current tag depth
+     * get the current tag depth.
      *
      * The root tag is in depth 0.
      *
-     * @access   public
-     * @return   integer
+     * @return   int
      */
-    function getCurrentDepth()
+    public function getCurrentDepth()
     {
         return $this->_depth;
     }
@@ -316,11 +313,9 @@ class XML_Parser_Simple extends XML_Parser
      * @param string $data data to add
      *
      * @return void
-     * @access public
      */
-    function addToData($data)
+    public function addToData($data)
     {
         $this->_data[$this->_depth] .= $data;
     }
 }
-?>

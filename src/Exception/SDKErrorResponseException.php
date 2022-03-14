@@ -2,14 +2,12 @@
 
 namespace Dnetix\MasterPass\Exception;
 
-
 /**
  * Thrown when application get the error response from server.
  * SDK error handler check for the error response and throws the errors object.
  */
 class SDKErrorResponseException extends SDKBaseException
 {
-
     /* @param $errors | To get all errors info */
     public $errors;
 

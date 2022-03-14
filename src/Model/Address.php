@@ -2,17 +2,16 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 /**
  * This class contains methods to get consumer address details.
  */
 class Address
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'City' => 'City',
         'Country' => 'Country',
         'CountrySubdivision' => 'CountrySubdivision',
@@ -23,16 +22,16 @@ class Address
         'ExtensionPoint' => 'AddressExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'city' => 'setCity',
         'country' => 'setCountry',
         'country_subdivision' => 'setCountrySubdivision',
@@ -43,16 +42,16 @@ class Address
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'city' => 'getCity',
         'country' => 'getCountry',
         'country_subdivision' => 'getCountrySubdivision',
@@ -63,11 +62,10 @@ class Address
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $city the cardholder's city.
@@ -82,7 +80,7 @@ class Address
     public $Country;
 
     /**
-     * $country_subdivision the cardholder's country subdivision. Defined by ISO 3166-1 alpha-2 digit code, for example, US-VA is Virginia, US-OH is Ohio
+     * $country_subdivision the cardholder's country subdivision. Defined by ISO 3166-1 alpha-2 digit code, for example, US-VA is Virginia, US-OH is Ohio.
      * @var string
      */
     public $CountrySubdivision;
@@ -117,9 +115,8 @@ class Address
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct($data = null)
@@ -128,19 +125,19 @@ class Address
             if (is_object($data)) {
                 $data = (array)$data;
             }
-            $this->City = isset($data["City"]) ? $data["City"] : "";
-            $this->Country = isset($data["Country"]) ? $data["Country"] : "";
-            $this->CountrySubdivision = isset($data["CountrySubdivision"]) ? $data["CountrySubdivision"] : "";
-            $this->Line1 = isset($data["Line1"]) ? $data["Line1"] : "";
-            $this->Line2 = isset($data["Line2"]) ? $data["Line2"] : "";
-            $this->Line3 = isset($data["Line3"]) ? $data["Line3"] : "";
-            $this->PostalCode = isset($data["PostalCode"]) ? $data["PostalCode"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->City = isset($data['City']) ? $data['City'] : '';
+            $this->Country = isset($data['Country']) ? $data['Country'] : '';
+            $this->CountrySubdivision = isset($data['CountrySubdivision']) ? $data['CountrySubdivision'] : '';
+            $this->Line1 = isset($data['Line1']) ? $data['Line1'] : '';
+            $this->Line2 = isset($data['Line2']) ? $data['Line2'] : '';
+            $this->Line3 = isset($data['Line3']) ? $data['Line3'] : '';
+            $this->PostalCode = isset($data['PostalCode']) ? $data['PostalCode'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets city
+     * Gets city.
      * @return string
      */
     public function getCity()
@@ -149,19 +146,18 @@ class Address
     }
 
     /**
-     * Sets city
+     * Sets city.
      * @param string $city the cardholder's city.
      * @return $this
      */
     public function setCity($city)
     {
-
         $this->City = $city;
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets country.
      * @return string
      */
     public function getCountry()
@@ -170,19 +166,18 @@ class Address
     }
 
     /**
-     * Sets country
+     * Sets country.
      * @param string $country the cardholder's country. Defined by ISO 3166-1 alpha-2 digit country codes, for example, US is United States, AU is Australia, CA is Canada, GB is United Kingdom, and so on.
      * @return $this
      */
     public function setCountry($country)
     {
-
         $this->Country = $country;
         return $this;
     }
 
     /**
-     * Gets country_subdivision
+     * Gets country_subdivision.
      * @return string
      */
     public function getCountrySubdivision()
@@ -191,19 +186,18 @@ class Address
     }
 
     /**
-     * Sets country_subdivision
+     * Sets country_subdivision.
      * @param string $country_subdivision the cardholder's country subdivision. Defined by ISO 3166-1 alpha-2 digit code, for example, US-VA is Virginia, US-OH is Ohio
      * @return $this
      */
     public function setCountrySubdivision($country_subdivision)
     {
-
         $this->CountrySubdivision = $country_subdivision;
         return $this;
     }
 
     /**
-     * Gets line1
+     * Gets line1.
      * @return string
      */
     public function getLine1()
@@ -212,19 +206,18 @@ class Address
     }
 
     /**
-     * Sets line1
+     * Sets line1.
      * @param string $line1 the address line 1 used for Street number and Street Name.
      * @return $this
      */
     public function setLine1($line1)
     {
-
         $this->Line1 = $line1;
         return $this;
     }
 
     /**
-     * Gets line2
+     * Gets line2.
      * @return string
      */
     public function getLine2()
@@ -233,19 +226,18 @@ class Address
     }
 
     /**
-     * Sets line2
+     * Sets line2.
      * @param string $line2 the address line 2 used for Apt Number, Suite Number, and so on.
      * @return $this
      */
     public function setLine2($line2)
     {
-
         $this->Line2 = $line2;
         return $this;
     }
 
     /**
-     * Gets line3
+     * Gets line3.
      * @return string
      */
     public function getLine3()
@@ -254,19 +246,18 @@ class Address
     }
 
     /**
-     * Sets line3
+     * Sets line3.
      * @param string $line3 the address line 3 used to enter remaining address information if it does not fit in Line 1 and Line 2.
      * @return $this
      */
     public function setLine3($line3)
     {
-
         $this->Line3 = $line3;
         return $this;
     }
 
     /**
-     * Gets postal_code
+     * Gets postal_code.
      * @return string
      */
     public function getPostalCode()
@@ -275,19 +266,18 @@ class Address
     }
 
     /**
-     * Sets postal_code
+     * Sets postal_code.
      * @param string $postal_code the postal code or zip code appended to mailing address for the purpose of sorting mail.
      * @return $this
      */
     public function setPostalCode($postal_code)
     {
-
         $this->PostalCode = $postal_code;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return AddressExtensionPoint
      */
     public function getExtensionPoint()
@@ -296,16 +286,13 @@ class Address
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param AddressExtensionPoint $extension_point the AddressExtensionPoint for additional information.
      * @return $this
      */
     public function setExtensionPoint($extension_point)
     {
-
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

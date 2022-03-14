@@ -8,10 +8,10 @@ namespace Dnetix\MasterPass\Model;
 class Checkout
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'Card' => 'Card',
         'TransactionId' => 'TransactionId',
         'Contact' => 'Contact',
@@ -23,16 +23,16 @@ class Checkout
         'ExtensionPoint' => 'CheckoutExtension',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'card' => 'setCard',
         'transaction_id' => 'setTransactionId',
         'contact' => 'setContact',
@@ -44,16 +44,16 @@ class Checkout
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'card' => 'getCard',
         'transaction_id' => 'getTransactionId',
         'contact' => 'getContact',
@@ -65,7 +65,7 @@ class Checkout
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
@@ -124,32 +124,31 @@ class Checkout
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-
-            if (is_object($data))
+            if (is_object($data)) {
                 $data = (array)$data;
+            }
 
-            $this->Card = isset($data["Card"]) ? $data["Card"] : "";
-            $this->TransactionId = isset($data["TransactionId"]) ? $data["TransactionId"] : "";
-            $this->Contact = isset($data["Contact"]) ? $data["Contact"] : "";
-            $this->ShippingAddress = isset($data["ShippingAddress"]) ? $data["ShippingAddress"] : "";
-            $this->AuthenticationOptions = isset($data["AuthenticationOptions"]) ? $data["AuthenticationOptions"] : "";
-            $this->RewardProgram = isset($data["RewardProgram"]) ? $data["RewardProgram"] : "";
-            $this->WalletID = isset($data["WalletID"]) ? $data["WalletID"] : "";
-            $this->PreCheckoutTransactionId = isset($data["PreCheckoutTransactionId"]) ? $data["PreCheckoutTransactionId"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->Card = isset($data['Card']) ? $data['Card'] : '';
+            $this->TransactionId = isset($data['TransactionId']) ? $data['TransactionId'] : '';
+            $this->Contact = isset($data['Contact']) ? $data['Contact'] : '';
+            $this->ShippingAddress = isset($data['ShippingAddress']) ? $data['ShippingAddress'] : '';
+            $this->AuthenticationOptions = isset($data['AuthenticationOptions']) ? $data['AuthenticationOptions'] : '';
+            $this->RewardProgram = isset($data['RewardProgram']) ? $data['RewardProgram'] : '';
+            $this->WalletID = isset($data['WalletID']) ? $data['WalletID'] : '';
+            $this->PreCheckoutTransactionId = isset($data['PreCheckoutTransactionId']) ? $data['PreCheckoutTransactionId'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets card
+     * Gets card.
      * @return Card
      */
     public function getCard()
@@ -161,19 +160,18 @@ class Checkout
     }
 
     /**
-     * Sets card
+     * Sets card.
      * @param Card $card the card details.
      * @return $this
      */
     public function setCard($card)
     {
-
         $this->Card = $card;
         return $this;
     }
 
     /**
-     * Gets transaction_id
+     * Gets transaction_id.
      * @return string
      */
     public function getTransactionId()
@@ -182,7 +180,7 @@ class Checkout
     }
 
     /**
-     * Sets transaction_id
+     * Sets transaction_id.
      * @param string $transaction_id the transaction id.
      * @return $this
      */
@@ -193,7 +191,7 @@ class Checkout
     }
 
     /**
-     * Gets contact
+     * Gets contact.
      * @return Contact
      */
     public function getContact()
@@ -205,7 +203,7 @@ class Checkout
     }
 
     /**
-     * Sets contact
+     * Sets contact.
      * @param Contact $contact the contact details.
      * @return $this
      */
@@ -216,7 +214,7 @@ class Checkout
     }
 
     /**
-     * Gets shipping_address
+     * Gets shipping_address.
      * @return ShippingAddress
      */
     public function getShippingAddress()
@@ -225,19 +223,18 @@ class Checkout
     }
 
     /**
-     * Sets shipping_address
+     * Sets shipping_address.
      * @param ShippingAddress $shipping_address the shipping address details.
      * @return $this
      */
     public function setShippingAddress($shipping_address)
     {
-
         $this->ShippingAddress = $shipping_address;
         return $this;
     }
 
     /**
-     * Gets authentication_options
+     * Gets authentication_options.
      * @return AuthenticationOptions
      */
     public function getAuthenticationOptions()
@@ -246,19 +243,18 @@ class Checkout
     }
 
     /**
-     * Sets authentication_options
+     * Sets authentication_options.
      * @param AuthenticationOptions $authentication_options the authentication options.
      * @return $this
      */
     public function setAuthenticationOptions($authentication_options)
     {
-
         $this->AuthenticationOptions = $authentication_options;
         return $this;
     }
 
     /**
-     * Gets reward_program
+     * Gets reward_program.
      * @return RewardProgram
      */
     public function getRewardProgram()
@@ -267,19 +263,18 @@ class Checkout
     }
 
     /**
-     * Sets reward_program
+     * Sets reward_program.
      * @param RewardProgram $reward_program the reward program details.
      * @return $this
      */
     public function setRewardProgram($reward_program)
     {
-
         $this->RewardProgram = $reward_program;
         return $this;
     }
 
     /**
-     * Gets wallet_id
+     * Gets wallet_id.
      * @return string
      */
     public function getWalletId()
@@ -288,19 +283,18 @@ class Checkout
     }
 
     /**
-     * Sets wallet_id
+     * Sets wallet_id.
      * @param string $wallet_id the value which helps to identify origin wallet.
      * @return $this
      */
     public function setWalletId($wallet_id)
     {
-
         $this->WalletID = $wallet_id;
         return $this;
     }
 
     /**
-     * Gets pre_checkout_transaction_id
+     * Gets pre_checkout_transaction_id.
      * @return string
      */
     public function getPreCheckoutTransactionId()
@@ -309,19 +303,18 @@ class Checkout
     }
 
     /**
-     * Sets pre_checkout_transaction_id
+     * Sets pre_checkout_transaction_id.
      * @param string $pre_checkout_transaction_id the ID associated with the PreCheckout Transaction.
      * @return $this
      */
     public function setPreCheckoutTransactionId($pre_checkout_transaction_id)
     {
-
         $this->PreCheckoutTransactionId = $pre_checkout_transaction_id;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return CheckoutExtension
      */
     public function getExtensionPoint()
@@ -330,19 +323,18 @@ class Checkout
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param CheckoutExtension $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
     public function setExtensionPoint($extension_point)
     {
-
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
 
     /**
-     * Construct an array information of Person
+     * Construct an array information of Person.
      */
     public function getPayer()
     {
@@ -359,6 +351,4 @@ class Checkout
             ],
         ];
     }
-
 }
-

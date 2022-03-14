@@ -2,60 +2,58 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 /**
  * This class contains methods related to date of birth.
  */
 class DateOfBirth
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'Year' => 'Year',
         'Month' => 'Month',
         'Day' => 'Day',
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'year' => 'setYear',
         'month' => 'setMonth',
         'day' => 'setDay',
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'year' => 'getYear',
         'month' => 'getMonth',
         'day' => 'getDay',
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $year the contact DOB Year.
@@ -81,24 +79,22 @@ class DateOfBirth
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->Year = isset($data["Year"]) ? $data["Year"] : "";
-            $this->Month = isset($data["Month"]) ? $data["Month"] : "";
-            $this->Day = isset($data["Day"]) ? $data["Day"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->Year = isset($data['Year']) ? $data['Year'] : '';
+            $this->Month = isset($data['Month']) ? $data['Month'] : '';
+            $this->Day = isset($data['Day']) ? $data['Day'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets year
+     * Gets year.
      * @return int
      */
     public function getYear()
@@ -107,19 +103,18 @@ class DateOfBirth
     }
 
     /**
-     * Sets year
+     * Sets year.
      * @param int $year the contact DOB Year.
      * @return $this
      */
     public function setYear($year)
     {
-
         $this->Year = $year;
         return $this;
     }
 
     /**
-     * Gets month
+     * Gets month.
      * @return int
      */
     public function getMonth()
@@ -128,19 +123,18 @@ class DateOfBirth
     }
 
     /**
-     * Sets month
+     * Sets month.
      * @param int $month the contact DOB Month.
      * @return $this
      */
     public function setMonth($month)
     {
-
         $this->Month = $month;
         return $this;
     }
 
     /**
-     * Gets day
+     * Gets day.
      * @return int
      */
     public function getDay()
@@ -149,19 +143,18 @@ class DateOfBirth
     }
 
     /**
-     * Sets day
+     * Sets day.
      * @param int $day the contact DOB Day.
      * @return $this
      */
     public function setDay($day)
     {
-
         $this->Day = $day;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -170,16 +163,13 @@ class DateOfBirth
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
     public function setExtensionPoint($extension_point)
     {
-
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

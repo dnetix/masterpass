@@ -8,10 +8,10 @@ namespace Dnetix\MasterPass\Model;
 class Contact
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'FirstName' => 'FirstName',
         'MiddleName' => 'MiddleName',
         'LastName' => 'LastName',
@@ -24,16 +24,16 @@ class Contact
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'first_name' => 'setFirstName',
         'middle_name' => 'setMiddleName',
         'last_name' => 'setLastName',
@@ -46,16 +46,16 @@ class Contact
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'first_name' => 'getFirstName',
         'middle_name' => 'getMiddleName',
         'last_name' => 'getLastName',
@@ -68,11 +68,10 @@ class Contact
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $first_name the contact first name.
@@ -134,9 +133,8 @@ class Contact
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct($data = null)
@@ -145,21 +143,21 @@ class Contact
             if (is_object($data)) {
                 $data = (array)$data;
             }
-            $this->FirstName = isset($data["FirstName"]) ? $data["FirstName"] : "";
-            $this->MiddleName = isset($data["MiddleName"]) ? $data["MiddleName"] : "";
-            $this->LastName = isset($data["LastName"]) ? $data["LastName"] : "";
-            $this->Gender = isset($data["Gender"]) ? $data["Gender"] : "";
-            $this->DateOfBirth = isset($data["DateOfBirth"]) ? $data["DateOfBirth"] : "";
-            $this->NationalID = isset($data["NationalID"]) ? $data["NationalID"] : "";
-            $this->Country = isset($data["Country"]) ? $data["Country"] : "";
-            $this->EmailAddress = isset($data["EmailAddress"]) ? $data["EmailAddress"] : "";
-            $this->PhoneNumber = isset($data["PhoneNumber"]) ? $data["PhoneNumber"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->FirstName = isset($data['FirstName']) ? $data['FirstName'] : '';
+            $this->MiddleName = isset($data['MiddleName']) ? $data['MiddleName'] : '';
+            $this->LastName = isset($data['LastName']) ? $data['LastName'] : '';
+            $this->Gender = isset($data['Gender']) ? $data['Gender'] : '';
+            $this->DateOfBirth = isset($data['DateOfBirth']) ? $data['DateOfBirth'] : '';
+            $this->NationalID = isset($data['NationalID']) ? $data['NationalID'] : '';
+            $this->Country = isset($data['Country']) ? $data['Country'] : '';
+            $this->EmailAddress = isset($data['EmailAddress']) ? $data['EmailAddress'] : '';
+            $this->PhoneNumber = isset($data['PhoneNumber']) ? $data['PhoneNumber'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets first_name
+     * Gets first_name.
      * @return string
      */
     public function getFirstName()
@@ -168,19 +166,18 @@ class Contact
     }
 
     /**
-     * Sets first_name
+     * Sets first_name.
      * @param string $first_name the contact first name.
      * @return $this
      */
     public function setFirstName($first_name)
     {
-
         $this->FirstName = $first_name;
         return $this;
     }
 
     /**
-     * Gets middle_name
+     * Gets middle_name.
      * @return string
      */
     public function getMiddleName()
@@ -189,19 +186,18 @@ class Contact
     }
 
     /**
-     * Sets middle_name
+     * Sets middle_name.
      * @param string $middle_name the contact middle name or initial.
      * @return $this
      */
     public function setMiddleName($middle_name)
     {
-
         $this->MiddleName = $middle_name;
         return $this;
     }
 
     /**
-     * Gets last_name
+     * Gets last_name.
      * @return string
      */
     public function getLastName()
@@ -210,19 +206,18 @@ class Contact
     }
 
     /**
-     * Sets last_name
+     * Sets last_name.
      * @param string $last_name the contact surname.
      * @return $this
      */
     public function setLastName($last_name)
     {
-
         $this->LastName = $last_name;
         return $this;
     }
 
     /**
-     * Gets gender
+     * Gets gender.
      * @return string
      */
     public function getGender()
@@ -231,13 +226,13 @@ class Contact
     }
 
     /**
-     * Sets gender
+     * Sets gender.
      * @param string $gender the contact Gender (M or F). NOTE: This field may only be requested from a MasterPass wallet if it is required by law in a region. Merchants and service providers seeking to use this field must work with the local MasterPass representative to get the necessary clearances before requesting these data elements.
      * @return $this
      */
     public function setGender($gender)
     {
-        $allowed_values = ["M", "F"];
+        $allowed_values = ['M', 'F'];
         if (!in_array($gender, $allowed_values)) {
             throw new \InvalidArgumentException("Invalid value for 'gender', must be one of 'M', 'F'");
         }
@@ -246,7 +241,7 @@ class Contact
     }
 
     /**
-     * Gets date_of_birth
+     * Gets date_of_birth.
      * @return DateOfBirth
      */
     public function getDateOfBirth()
@@ -255,19 +250,18 @@ class Contact
     }
 
     /**
-     * Sets date_of_birth
+     * Sets date_of_birth.
      * @param DateOfBirth $date_of_birth the contact DOB - YYYY/MM/DD. NOTE: This field may only be requested from a MasterPass wallet if it is required by law in a region. Merchants and service providers seeking to use this field must work with the local MasterPass representative to get the necessary clearances before requesting these data elements.
      * @return $this
      */
     public function setDateOfBirth($date_of_birth)
     {
-
         $this->DateOfBirth = $date_of_birth;
         return $this;
     }
 
     /**
-     * Gets national_id
+     * Gets national_id.
      * @return string
      */
     public function getNationalId()
@@ -276,19 +270,18 @@ class Contact
     }
 
     /**
-     * Sets national_id
+     * Sets national_id.
      * @param string $national_id the contact National Identification. NOTE: This field may only be requested from a MasterPass wallet if it is required by law in a region. Merchants and service providers seeking to use this field must work with the local MasterPass representative to get the necessary clearances before requesting these data elements.
      * @return $this
      */
     public function setNationalId($national_id)
     {
-
         $this->NationalID = $national_id;
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets country.
      * @return string
      */
     public function getCountry()
@@ -297,19 +290,18 @@ class Contact
     }
 
     /**
-     * Sets country
+     * Sets country.
      * @param string $country the contact country of residence.
      * @return $this
      */
     public function setCountry($country)
     {
-
         $this->Country = $country;
         return $this;
     }
 
     /**
-     * Gets email_address
+     * Gets email_address.
      * @return string
      */
     public function getEmailAddress()
@@ -318,19 +310,18 @@ class Contact
     }
 
     /**
-     * Sets email_address
+     * Sets email_address.
      * @param string $email_address the contact email aAddress.
      * @return $this
      */
     public function setEmailAddress($email_address)
     {
-
         $this->EmailAddress = $email_address;
         return $this;
     }
 
     /**
-     * Gets phone_number
+     * Gets phone_number.
      * @return string
      */
     public function getPhoneNumber()
@@ -339,19 +330,18 @@ class Contact
     }
 
     /**
-     * Sets phone_number
+     * Sets phone_number.
      * @param string $phone_number the contact phone.
      * @return $this
      */
     public function setPhoneNumber($phone_number)
     {
-
         $this->PhoneNumber = $phone_number;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -360,7 +350,7 @@ class Contact
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -369,6 +359,4 @@ class Contact
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

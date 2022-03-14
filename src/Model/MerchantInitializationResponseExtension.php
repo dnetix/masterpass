@@ -8,44 +8,43 @@ namespace Dnetix\MasterPass\Model;
 class MerchantInitializationResponseExtension
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'UnpredictableNumber' => 'UnpredictableNumber',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'unpredictable_number' => 'setUnpredictableNumber',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'unpredictable_number' => 'getUnpredictableNumber',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $unpredictable_number the unpredictable number.
@@ -53,21 +52,19 @@ class MerchantInitializationResponseExtension
      */
     public $UnpredictableNumber;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->UnpredictableNumber = isset($data["UnpredictableNumber"]) ? $data["UnpredictableNumber"] : "";
+            $this->UnpredictableNumber = isset($data['UnpredictableNumber']) ? $data['UnpredictableNumber'] : '';
         }
     }
 
     /**
-     * Gets unpredictable_number
+     * Gets unpredictable_number.
      * @return string
      */
     public function getUnpredictableNumber()
@@ -76,7 +73,7 @@ class MerchantInitializationResponseExtension
     }
 
     /**
-     * Sets unpredictable_number
+     * Sets unpredictable_number.
      * @param string $unpredictable_number the unpredictable number.
      * @return $this
      */
@@ -85,6 +82,4 @@ class MerchantInitializationResponseExtension
         $this->UnpredictableNumber = $unpredictable_number;
         return $this;
     }
-
 }
-

@@ -8,10 +8,10 @@ namespace Dnetix\MasterPass\Model;
 class CheckoutExtension
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'CardVerificationStatus' => 'CardVerificationStatus',
         'LoginAuthenticationMethod' => 'LoginAuthenticationMethod',
         'RiskDecisioning' => 'RiskDecisioning',
@@ -23,16 +23,16 @@ class CheckoutExtension
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'card_verification_status' => 'setCardVerificationStatus',
         'login_authentication_method' => 'setLoginAuthenticationMethod',
         'risk_decisioning' => 'setRiskDecisioning',
@@ -44,16 +44,16 @@ class CheckoutExtension
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'card_verification_status' => 'getCardVerificationStatus',
         'login_authentication_method' => 'getLoginAuthenticationMethod',
         'risk_decisioning' => 'getRiskDecisioning',
@@ -65,11 +65,10 @@ class CheckoutExtension
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $card_verification_status the card verification status.
@@ -125,29 +124,27 @@ class CheckoutExtension
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->CardVerificationStatus = isset($data["CardVerificationStatus"]) ? $data["CardVerificationStatus"] : "";
-            $this->LoginAuthenticationMethod = isset($data["LoginAuthenticationMethod"]) ? $data["LoginAuthenticationMethod"] : "";
-            $this->RiskDecisioning = isset($data["RiskDecisioning"]) ? $data["RiskDecisioning"] : "";
-            $this->DSRP = isset($data["DSRP"]) ? $data["DSRP"] : "";
-            $this->PrivateDatas = isset($data["PrivateDatas"]) ? $data["PrivateDatas"] : "";
-            $this->InstallmentOption = isset($data["InstallmentOption"]) ? $data["InstallmentOption"] : "";
-            $this->Tokenization = isset($data["Tokenization"]) ? $data["Tokenization"] : "";
-            $this->PaymentAccountReference = isset($data["PaymentAccountReference"]) ? $data["PaymentAccountReference"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->CardVerificationStatus = isset($data['CardVerificationStatus']) ? $data['CardVerificationStatus'] : '';
+            $this->LoginAuthenticationMethod = isset($data['LoginAuthenticationMethod']) ? $data['LoginAuthenticationMethod'] : '';
+            $this->RiskDecisioning = isset($data['RiskDecisioning']) ? $data['RiskDecisioning'] : '';
+            $this->DSRP = isset($data['DSRP']) ? $data['DSRP'] : '';
+            $this->PrivateDatas = isset($data['PrivateDatas']) ? $data['PrivateDatas'] : '';
+            $this->InstallmentOption = isset($data['InstallmentOption']) ? $data['InstallmentOption'] : '';
+            $this->Tokenization = isset($data['Tokenization']) ? $data['Tokenization'] : '';
+            $this->PaymentAccountReference = isset($data['PaymentAccountReference']) ? $data['PaymentAccountReference'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets card_verification_status
+     * Gets card_verification_status.
      * @return string
      */
     public function getCardVerificationStatus()
@@ -156,19 +153,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets card_verification_status
+     * Sets card_verification_status.
      * @param string $card_verification_status the card verification status.
      * @return $this
      */
     public function setCardVerificationStatus($card_verification_status)
     {
-
         $this->CardVerificationStatus = $card_verification_status;
         return $this;
     }
 
     /**
-     * Gets login_authentication_method
+     * Gets login_authentication_method.
      * @return string
      */
     public function getLoginAuthenticationMethod()
@@ -177,19 +173,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets login_authentication_method
+     * Sets login_authentication_method.
      * @param string $login_authentication_method the login authentication method.
      * @return $this
      */
     public function setLoginAuthenticationMethod($login_authentication_method)
     {
-
         $this->LoginAuthenticationMethod = $login_authentication_method;
         return $this;
     }
 
     /**
-     * Gets risk_decisioning
+     * Gets risk_decisioning.
      * @return RiskDecisioning
      */
     public function getRiskDecisioning()
@@ -198,19 +193,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets risk_decisioning
+     * Sets risk_decisioning.
      * @param RiskDecisioning $risk_decisioning the risk decisioning data.
      * @return $this
      */
     public function setRiskDecisioning($risk_decisioning)
     {
-
         $this->RiskDecisioning = $risk_decisioning;
         return $this;
     }
 
     /**
-     * Gets dsrp
+     * Gets dsrp.
      * @return CheckoutDSRP
      */
     public function getDsrp()
@@ -219,19 +213,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets dsrp
+     * Sets dsrp.
      * @param CheckoutDSRP $dsrp the DSRP data.
      * @return $this
      */
     public function setDsrp($dsrp)
     {
-
         $this->DSRP = $dsrp;
         return $this;
     }
 
     /**
-     * Gets private_datas
+     * Gets private_datas.
      * @return PrivateDatas
      */
     public function getPrivateDatas()
@@ -240,19 +233,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets private_datas
+     * Sets private_datas.
      * @param PrivateDatas $private_datas the private data details.
      * @return $this
      */
     public function setPrivateDatas($private_datas)
     {
-
         $this->PrivateDatas = $private_datas;
         return $this;
     }
 
     /**
-     * Gets installment_option
+     * Gets installment_option.
      * @return InstallmentOption
      */
     public function getInstallmentOption()
@@ -261,19 +253,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets installment_option
+     * Sets installment_option.
      * @param InstallmentOption $installment_option the installment options details.
      * @return $this
      */
     public function setInstallmentOption($installment_option)
     {
-
         $this->InstallmentOption = $installment_option;
         return $this;
     }
 
     /**
-     * Gets tokenization
+     * Gets tokenization.
      * @return Tokenization
      */
     public function getTokenization()
@@ -282,19 +273,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets tokenization
+     * Sets tokenization.
      * @param Tokenization $tokenization the token details.
      * @return $this
      */
     public function setTokenization($tokenization)
     {
-
         $this->Tokenization = $tokenization;
         return $this;
     }
 
     /**
-     * Gets payment_account_reference
+     * Gets payment_account_reference.
      * @return string
      */
     public function getPaymentAccountReference()
@@ -303,19 +293,18 @@ class CheckoutExtension
     }
 
     /**
-     * Sets payment_account_reference
+     * Sets payment_account_reference.
      * @param string $payment_account_reference the payment account reference.
      * @return $this
      */
     public function setPaymentAccountReference($payment_account_reference)
     {
-
         $this->PaymentAccountReference = $payment_account_reference;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -324,7 +313,7 @@ class CheckoutExtension
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -333,6 +322,4 @@ class CheckoutExtension
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

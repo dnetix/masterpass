@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Dnetix\MasterPass\Converters;
 
 require_once __DIR__ . '/../../lib/XML/Serializer.php';
@@ -12,16 +11,15 @@ use Exception;
 use XML_Serializer;
 
 /**
- * XMLConverter  - XML request and response converter
+ * XMLConverter  - XML request and response converter.
  */
 class XMLConverter implements SDKConverter
 {
-
     public $options = [
         XML_SERIALIZER_OPTION_INDENT => '    ',
         XML_SERIALIZER_OPTION_RETURN_RESULT => true,
-        "typeHints" => false,
-        "addDecl" => true,
+        'typeHints' => false,
+        'addDecl' => true,
         XML_SERIALIZER_OPTION_CLASSNAME_AS_TAGNAME => 'true',
         'mode' => 'simplexml',
     ];
@@ -37,7 +35,7 @@ class XMLConverter implements SDKConverter
         XML_UNSERIALIZER_OPTION_DEFAULT_CLASS => 'stdClass',
 
         // specify the target encoding
-        XML_UNSERIALIZER_OPTION_ENCODING_TARGET => "UTF-8",
+        XML_UNSERIALIZER_OPTION_ENCODING_TARGET => 'UTF-8',
 
         // unserialize() returns the result of the unserialization instead of true
         XML_UNSERIALIZER_OPTION_RETURN_RESULT => true,
@@ -59,7 +57,6 @@ class XMLConverter implements SDKConverter
         $tagMapArray = [];
 
         try {
-
             if (!empty($objRequest)) {
                 foreach ($objRequest as $key => $value) {
                     if (class_exists($key)) {
@@ -68,7 +65,6 @@ class XMLConverter implements SDKConverter
                             $tagMapArray = array_merge($tagMapArray, $key::$attributeMap);
                         }
                     }
-
                 }
             }
 
@@ -79,11 +75,9 @@ class XMLConverter implements SDKConverter
             // TODO: Serialize without this replace
 
             return str_replace('Dnetix\MasterPass\Model\\', '', $result);
-
         } catch (Exception $e) {
-            throw new SDKConversionException($e, __class__);
+            throw new SDKConversionException($e, __CLASS__);
         }
-
     }
 
     /**
@@ -114,9 +108,7 @@ class XMLConverter implements SDKConverter
             $unserializer = new \XML_Unserializer($this->options_unserialize);
             return $unserializer->unserialize($xmlResponse, false, [XML_UNSERIALIZER_OPTION_TAG_MAP => $tagMapArray]);
         } catch (Exception $e) {
-            throw new SDKConversionException($e, __class__);
+            throw new SDKConversionException($e, __CLASS__);
         }
-
     }
-
 }

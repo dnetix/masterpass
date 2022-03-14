@@ -2,47 +2,46 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 /**
- * MerchantTransactions
+ * MerchantTransactions.
  */
 class MerchantTransactions
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'MerchantTransactions' => 'MerchantTransaction',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'merchant_transactions' => 'setMerchantTransactions',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'merchant_transactions' => 'getMerchantTransactions',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
@@ -54,13 +53,13 @@ class MerchantTransactions
     public $MerchantTransactions = [];
 
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $transactions = isset($data["MerchantTransactions"]) ? $data["MerchantTransactions"] : null;
+            $transactions = isset($data['MerchantTransactions']) ? $data['MerchantTransactions'] : null;
 
             if (is_array($transactions)) {
                 foreach ($transactions as $transaction) {
@@ -75,13 +74,13 @@ class MerchantTransactions
     public function parseMerchantTransaction($data)
     {
         if (!($data instanceof MerchantTransaction)) {
-            $data = new MerchantTransaction((array) $data);
+            $data = new MerchantTransaction((array)$data);
         }
         return $data;
     }
 
     /**
-     * Gets merchant_transactions
+     * Gets merchant_transactions.
      * @return MerchantTransaction[]
      */
     public function getMerchantTransactions()
@@ -90,7 +89,7 @@ class MerchantTransactions
     }
 
     /**
-     * Sets merchant_transactions
+     * Sets merchant_transactions.
      * @param MerchantTransaction[] $merchant_transactions the merchant transaction details.
      * @return $this
      */
@@ -99,6 +98,4 @@ class MerchantTransactions
         $this->MerchantTransactions = $merchant_transactions;
         return $this;
     }
-
 }
-

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Dnetix\MasterPass\Model;
 
 /**
@@ -9,49 +8,49 @@ namespace Dnetix\MasterPass\Model;
 class ShoppingCart
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'CurrencyCode' => 'CurrencyCode',
         'Subtotal' => 'Subtotal',
         'ShoppingCartItem' => 'ShoppingCartItem',
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'currency_code' => 'setCurrencyCode',
         'subtotal' => 'setSubtotal',
         'shopping_cart_item' => 'setShoppingCartItem',
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'currency_code' => 'getCurrencyCode',
         'subtotal' => 'getSubtotal',
         'shopping_cart_item' => 'getShoppingCartItem',
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
@@ -80,24 +79,22 @@ class ShoppingCart
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->CurrencyCode = isset($data["CurrencyCode"]) ? $data["CurrencyCode"] : "";
-            $this->Subtotal = isset($data["Subtotal"]) ? $data["Subtotal"] : "";
-            $this->ShoppingCartItem = isset($data["ShoppingCartItem"]) ? $data["ShoppingCartItem"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->CurrencyCode = isset($data['CurrencyCode']) ? $data['CurrencyCode'] : '';
+            $this->Subtotal = isset($data['Subtotal']) ? $data['Subtotal'] : '';
+            $this->ShoppingCartItem = isset($data['ShoppingCartItem']) ? $data['ShoppingCartItem'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets currency_code
+     * Gets currency_code.
      * @return string
      */
     public function getCurrencyCode()
@@ -106,7 +103,7 @@ class ShoppingCart
     }
 
     /**
-     * Sets currency_code
+     * Sets currency_code.
      * @param string $currency_code the currency code defined by ISO 4217. Its should be exactly three characters, such as, USD for US Dollars. All MonetaryValues will be modified by the CurrencyCode.
      * @return $this
      */
@@ -117,7 +114,7 @@ class ShoppingCart
     }
 
     /**
-     * Gets subtotal
+     * Gets subtotal.
      * @return int
      */
     public function getSubtotal()
@@ -126,19 +123,18 @@ class ShoppingCart
     }
 
     /**
-     * Sets subtotal
+     * Sets subtotal.
      * @param int $subtotal the total sum of all the items in the cart excluding shipping, handling and tax. Integer without the decimal, for example, USD 119.00 will be 11900.
      * @return $this
      */
     public function setSubtotal($subtotal)
     {
-
         $this->Subtotal = $subtotal;
         return $this;
     }
 
     /**
-     * Gets shopping_cart_item
+     * Gets shopping_cart_item.
      * @return ShoppingCartItem[]
      */
     public function getShoppingCartItem()
@@ -147,7 +143,7 @@ class ShoppingCart
     }
 
     /**
-     * Sets shopping_cart_item
+     * Sets shopping_cart_item.
      * @param ShoppingCartItem[] $shopping_cart_item the details of a single shopping cart item.
      * @return $this
      */
@@ -158,7 +154,7 @@ class ShoppingCart
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -167,7 +163,7 @@ class ShoppingCart
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -176,6 +172,4 @@ class ShoppingCart
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

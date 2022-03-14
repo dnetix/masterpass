@@ -3,11 +3,10 @@
 namespace Dnetix\MasterPass\Model;
 
 /**
- *  Holds data relevant to the Request Token
+ *  Holds data relevant to the Request Token.
  */
 class RequestTokenResponse
 {
-
     protected $oauth_callback_confirmed;
     protected $oauth_expires_in;
     protected $oauth_token;
@@ -29,12 +28,12 @@ class RequestTokenResponse
     }
 
     /**
-     * TODO: Eval the string to boolean
+     * TODO: Eval the string to boolean.
      * @return bool
      */
     public function isCallbackConfirmed()
     {
-        return !!$this->oauth_callback_confirmed;
+        return (bool)$this->oauth_callback_confirmed;
     }
 
     public function expiresIn()
@@ -56,5 +55,4 @@ class RequestTokenResponse
     {
         return $this->xoauth_request_auth_url;
     }
-
 }

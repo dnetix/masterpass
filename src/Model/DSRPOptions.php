@@ -8,43 +8,43 @@ namespace Dnetix\MasterPass\Model;
 class DSRPOptions
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'Option' => 'Option',
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'option' => 'setOption',
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'option' => 'getOption',
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
@@ -61,21 +61,20 @@ class DSRPOptions
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->Option = isset($data["Option"]) ? $data["Option"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->Option = isset($data['Option']) ? $data['Option'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets option
+     * Gets option.
      * @return Option[]
      */
     public function getOption()
@@ -84,19 +83,18 @@ class DSRPOptions
     }
 
     /**
-     * Sets option
+     * Sets option.
      * @param Option[] $option the DSRP option.
      * @return $this
      */
     public function setOption($option)
     {
-
         $this->Option = $option;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -105,7 +103,7 @@ class DSRPOptions
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -114,6 +112,4 @@ class DSRPOptions
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

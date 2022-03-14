@@ -4,8 +4,7 @@ use Dnetix\MasterPass\MasterCardApiConfig;
 
 class BaseTestCase extends PHPUnit_Framework_TestCase
 {
-
-    function client($params = [])
+    public function client($params = [])
     {
         $privateKey = getenv('MP_PRIVATE_KEY');
         $privateKey = base64_decode(substr($privateKey, 7));
@@ -16,5 +15,4 @@ class BaseTestCase extends PHPUnit_Framework_TestCase
 
         return new \Dnetix\MasterPass\MasterPassApi();
     }
-
 }

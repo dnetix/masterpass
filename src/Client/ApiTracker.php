@@ -1,6 +1,7 @@
 <?php
 
 namespace Dnetix\MasterPass\Client;
+
 use Dnetix\MasterPass\baseSdkVersion;
 use Dnetix\MasterPass\Interfaces\IApiTracker;
 
@@ -9,16 +10,16 @@ use Dnetix\MasterPass\Interfaces\IApiTracker;
  */
 class ApiTracker implements IApiTracker
 {
-    const BASE_SDK_VERSION = 'base_sdk_version=';
+    public const BASE_SDK_VERSION = 'base_sdk_version=';
 
     public function getAPITrackingHeader()
     {
         $baseSdkVer = baseSdkVersion::baseVersion;
-        return ApiTracker::BASE_SDK_VERSION . $baseSdkVer;
+        return self::BASE_SDK_VERSION . $baseSdkVer;
     }
 
     public function getUserAgentHeader()
     {
-        return "MC Open API OAuth Framework v1.0-PHP";
+        return 'MC Open API OAuth Framework v1.0-PHP';
     }
 }

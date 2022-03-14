@@ -2,17 +2,16 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 /**
  * This class contains methods to get consumer reward program details.
  */
 class RewardProgram
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'RewardNumber' => 'RewardNumber',
         'RewardId' => 'RewardId',
         'RewardName' => 'RewardName',
@@ -21,16 +20,16 @@ class RewardProgram
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'reward_number' => 'setRewardNumber',
         'reward_id' => 'setRewardId',
         'reward_name' => 'setRewardName',
@@ -39,16 +38,16 @@ class RewardProgram
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'reward_number' => 'getRewardNumber',
         'reward_id' => 'getRewardId',
         'reward_name' => 'getRewardName',
@@ -57,11 +56,10 @@ class RewardProgram
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $reward_number the reward number.
@@ -99,26 +97,24 @@ class RewardProgram
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->RewardNumber = isset($data["RewardNumber"]) ? $data["RewardNumber"] : "";
-            $this->RewardId = isset($data["RewardId"]) ? $data["RewardId"] : "";
-            $this->RewardName = isset($data["RewardName"]) ? $data["RewardName"] : "";
-            $this->ExpiryMonth = isset($data["ExpiryMonth"]) ? $data["ExpiryMonth"] : "";
-            $this->ExpiryYear = isset($data["ExpiryYear"]) ? $data["ExpiryYear"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->RewardNumber = isset($data['RewardNumber']) ? $data['RewardNumber'] : '';
+            $this->RewardId = isset($data['RewardId']) ? $data['RewardId'] : '';
+            $this->RewardName = isset($data['RewardName']) ? $data['RewardName'] : '';
+            $this->ExpiryMonth = isset($data['ExpiryMonth']) ? $data['ExpiryMonth'] : '';
+            $this->ExpiryYear = isset($data['ExpiryYear']) ? $data['ExpiryYear'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets reward_number
+     * Gets reward_number.
      * @return string
      */
     public function getRewardNumber()
@@ -127,19 +123,18 @@ class RewardProgram
     }
 
     /**
-     * Sets reward_number
+     * Sets reward_number.
      * @param string $reward_number the reward number.
      * @return $this
      */
     public function setRewardNumber($reward_number)
     {
-
         $this->RewardNumber = $reward_number;
         return $this;
     }
 
     /**
-     * Gets reward_id
+     * Gets reward_id.
      * @return string
      */
     public function getRewardId()
@@ -148,19 +143,18 @@ class RewardProgram
     }
 
     /**
-     * Sets reward_id
+     * Sets reward_id.
      * @param string $reward_id the reward Id.
      * @return $this
      */
     public function setRewardId($reward_id)
     {
-
         $this->RewardId = $reward_id;
         return $this;
     }
 
     /**
-     * Gets reward_name
+     * Gets reward_name.
      * @return string
      */
     public function getRewardName()
@@ -169,19 +163,18 @@ class RewardProgram
     }
 
     /**
-     * Sets reward_name
+     * Sets reward_name.
      * @param string $reward_name the reward name.
      * @return $this
      */
     public function setRewardName($reward_name)
     {
-
         $this->RewardName = $reward_name;
         return $this;
     }
 
     /**
-     * Gets expiry_month
+     * Gets expiry_month.
      * @return int
      */
     public function getExpiryMonth()
@@ -190,19 +183,18 @@ class RewardProgram
     }
 
     /**
-     * Sets expiry_month
+     * Sets expiry_month.
      * @param int $expiry_month the expiry month.
      * @return $this
      */
     public function setExpiryMonth($expiry_month)
     {
-
         $this->ExpiryMonth = $expiry_month;
         return $this;
     }
 
     /**
-     * Gets expiry_year
+     * Gets expiry_year.
      * @return int
      */
     public function getExpiryYear()
@@ -211,19 +203,18 @@ class RewardProgram
     }
 
     /**
-     * Sets expiry_year
+     * Sets expiry_year.
      * @param int $expiry_year the expiry year.
      * @return $this
      */
     public function setExpiryYear($expiry_year)
     {
-
         $this->ExpiryYear = $expiry_year;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -232,7 +223,7 @@ class RewardProgram
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -241,7 +232,4 @@ class RewardProgram
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
-
 }
-

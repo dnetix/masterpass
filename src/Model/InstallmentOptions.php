@@ -8,44 +8,43 @@ namespace Dnetix\MasterPass\Model;
 class InstallmentOptions
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'InstallmentOption' => 'InstallmentOption',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'installment_option' => 'setInstallmentOption',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'installment_option' => 'getInstallmentOption',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $installment_option the installment option.
@@ -53,20 +52,19 @@ class InstallmentOptions
      */
     public $InstallmentOption;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->InstallmentOption = isset($data["InstallmentOption"]) ? $data["InstallmentOption"] : "";
+            $this->InstallmentOption = isset($data['InstallmentOption']) ? $data['InstallmentOption'] : '';
         }
     }
 
     /**
-     * Gets installment_option
+     * Gets installment_option.
      * @return InstallmentOption
      */
     public function getInstallmentOption()
@@ -75,7 +73,7 @@ class InstallmentOptions
     }
 
     /**
-     * Sets installment_option
+     * Sets installment_option.
      * @param InstallmentOption $installment_option the installment option.
      * @return $this
      */
@@ -84,6 +82,4 @@ class InstallmentOptions
         $this->InstallmentOption = $installment_option;
         return $this;
     }
-
 }
-

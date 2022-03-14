@@ -1,6 +1,7 @@
 <?php
 
 namespace Dnetix\MasterPass\Services;
+
 use Dnetix\MasterPass\Client\ApiClient;
 use Dnetix\MasterPass\Client\ApiTracker;
 use Dnetix\MasterPass\Exception\MasterpassErrorHandler;
@@ -8,11 +9,10 @@ use Dnetix\MasterPass\Helper\ServiceRequest;
 use Dnetix\MasterPass\Model\Checkout;
 
 /**
- * CheckoutApi Class
+ * CheckoutApi Class.
  */
 class CheckoutApi
 {
-
     /**
      * This service is used to retrieve consumers payment, shipping address, reward and 3-D Secure information
      * from MasterPass.
@@ -25,26 +25,24 @@ class CheckoutApi
      */
     public static function show($pathid, $oauth_token, $config = null)
     {
-
-        $path = "/masterpass/v6/checkout/{pathid}";
+        $path = '/masterpass/v6/checkout/{pathid}';
 
         $serviceRequest = new ServiceRequest();
-        $serviceRequest->pathParam("pathid", $pathid);
-        $serviceRequest->header("oauth_token", $oauth_token);
+        $serviceRequest->pathParam('pathid', $pathid);
+        $serviceRequest->header('oauth_token', $oauth_token);
 
-        $serviceRequest->contentType("application/xml");
+        $serviceRequest->contentType('application/xml');
 
         $apiClient = new ApiClient($config);
         $apiClient->setApiTracker(new ApiTracker());
         $apiClient->sdkErrorHandler = new MasterpassErrorHandler();
 
-        $response = (array)$apiClient->call($path, $serviceRequest, "GET", "Checkout");
+        $response = (array)$apiClient->call($path, $serviceRequest, 'GET', 'Checkout');
 
-        if (isset($response['Card']))
+        if (isset($response['Card'])) {
             return new Checkout($response);
+        }
 
         return null;
     }
-
 }
-

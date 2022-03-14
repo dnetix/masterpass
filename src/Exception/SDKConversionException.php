@@ -10,7 +10,6 @@ namespace Dnetix\MasterPass\Exception;
  */
 class SDKConversionException extends SDKBaseException
 {
-
     private $converterName;
 
     /**
@@ -29,5 +28,4 @@ class SDKConversionException extends SDKBaseException
     {
         return $this->converterName;
     }
-
 }

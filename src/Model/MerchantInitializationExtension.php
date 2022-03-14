@@ -8,53 +8,52 @@ namespace Dnetix\MasterPass\Model;
 class MerchantInitializationExtension
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'DSRP' => 'DSRPExtension',
         'SecondaryOriginUrl' => 'SecondaryOriginUrl',
         'PaymentOptions' => 'PaymentOptionsExtensions',
         'PrivateDatas' => 'PrivateDatas',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'dsrp' => 'setDsrp',
         'secondary_origin_url' => 'setSecondaryOriginUrl',
         'payment_options' => 'setPaymentOptions',
         'private_datas' => 'setPrivateDatas',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'dsrp' => 'getDsrp',
         'secondary_origin_url' => 'getSecondaryOriginUrl',
         'payment_options' => 'getPaymentOptions',
         'private_datas' => 'getPrivateDatas',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $dsrp the DSRP for merchant initialization request.
@@ -80,24 +79,22 @@ class MerchantInitializationExtension
      */
     public $PrivateDatas;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->DSRP = isset($data["DSRP"]) ? $data["DSRP"] : "";
-            $this->SecondaryOriginUrl = isset($data["SecondaryOriginUrl"]) ? $data["SecondaryOriginUrl"] : "";
-            $this->PaymentOptions = isset($data["PaymentOptions"]) ? $data["PaymentOptions"] : "";
-            $this->PrivateDatas = isset($data["PrivateDatas"]) ? $data["PrivateDatas"] : "";
+            $this->DSRP = isset($data['DSRP']) ? $data['DSRP'] : '';
+            $this->SecondaryOriginUrl = isset($data['SecondaryOriginUrl']) ? $data['SecondaryOriginUrl'] : '';
+            $this->PaymentOptions = isset($data['PaymentOptions']) ? $data['PaymentOptions'] : '';
+            $this->PrivateDatas = isset($data['PrivateDatas']) ? $data['PrivateDatas'] : '';
         }
     }
 
     /**
-     * Gets dsrp
+     * Gets dsrp.
      * @return DSRPExtension
      */
     public function getDsrp()
@@ -106,7 +103,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Sets dsrp
+     * Sets dsrp.
      * @param DSRPExtension $dsrp the DSRP for merchant initialization request.
      * @return $this
      */
@@ -117,7 +114,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Gets secondary_origin_url
+     * Gets secondary_origin_url.
      * @return string
      */
     public function getSecondaryOriginUrl()
@@ -126,7 +123,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Sets secondary_origin_url
+     * Sets secondary_origin_url.
      * @param string $secondary_origin_url the secondary origin url.
      * @return $this
      */
@@ -137,7 +134,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Gets payment_options
+     * Gets payment_options.
      * @return PaymentOptionsExtensions
      */
     public function getPaymentOptions()
@@ -146,7 +143,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Sets payment_options
+     * Sets payment_options.
      * @param PaymentOptionsExtensions $payment_options the payment options.
      * @return $this
      */
@@ -157,7 +154,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Gets private_datas
+     * Gets private_datas.
      * @return PrivateDatas
      */
     public function getPrivateDatas()
@@ -166,7 +163,7 @@ class MerchantInitializationExtension
     }
 
     /**
-     * Sets private_datas
+     * Sets private_datas.
      * @param PrivateDatas $private_datas the private data.
      * @return $this
      */
@@ -175,5 +172,4 @@ class MerchantInitializationExtension
         $this->PrivateDatas = $private_datas;
         return $this;
     }
-
 }

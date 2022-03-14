@@ -1,6 +1,7 @@
 <?php
 
 namespace Dnetix\MasterPass\Client;
+
 use Dnetix\MasterPass\ApiConfig;
 use Dnetix\MasterPass\Converters\SDKConverterFactory;
 use Dnetix\MasterPass\Exception\SDKBaseException;
@@ -24,8 +25,8 @@ use GuzzleHttp\Exception\ClientException;
  */
 class ApiClient
 {
-    const ERR_HANDLER_NOT_FOUND = "SDK Error Handler Not Found";
-    const ERR_RESPONSE_CODE = "Error Response Code : ";
+    public const ERR_HANDLER_NOT_FOUND = 'SDK Error Handler Not Found';
+    public const ERR_RESPONSE_CODE = 'Error Response Code : ';
 
     public $logger;
     public $sdkErrorHandler;
@@ -42,7 +43,7 @@ class ApiClient
     {
         $this->logger = Logger::getLogger(basename(__FILE__));
         try {
-            if (empty ($apiConfig)) {
+            if (empty($apiConfig)) {
                 $this->configApi = MasterCardApiConfig::getConfig();
             } else {
                 $this->configApi = $apiConfig;
@@ -53,7 +54,6 @@ class ApiClient
             $this->logger->error($e->getMessage());
             throw new SDKValidationException($e->getMessage());
         }
-
     }
 
     /**
@@ -76,13 +76,13 @@ class ApiClient
             }
         }
 
-        $this->logger->info($method . " " . $url);
+        $this->logger->info($method . ' ' . $url);
         $reqContentType = $serviceRequest->getContentType();
-        if (strpos($reqContentType, ";")) {
-            $contentType = explode(";", $reqContentType);
-            $contentTypeVal = explode("/", $contentType[0]);
+        if (strpos($reqContentType, ';')) {
+            $contentType = explode(';', $reqContentType);
+            $contentTypeVal = explode('/', $contentType[0]);
         } else {
-            $contentTypeVal = explode("/", $reqContentType);
+            $contentTypeVal = explode('/', $reqContentType);
         }
 
         $converter = SDKConverterFactory::getConverter(strtoupper($contentTypeVal[1]));
@@ -102,7 +102,7 @@ class ApiClient
 
         try {
             // Logging Request
-            MasterCardSDKLoggingInterceptor::requestLog($method . " " . $url, $headers, $result);
+            MasterCardSDKLoggingInterceptor::requestLog($method . ' ' . $url, $headers, $result);
 
             $client = new Client();
             $res = $client->request($method, $url, ['verify' => false, 'headers' => $headers, 'body' => $result]);
@@ -110,11 +110,11 @@ class ApiClient
 
             $contentTypeRes = $res->getHeader('Content-Type');
 
-            if (strpos($contentTypeRes [0], ";")) {
-                $contentType = explode(";", $contentTypeRes [0]);
-                $contentTypeVal = explode("/", $contentType [0]);
+            if (strpos($contentTypeRes[0], ';')) {
+                $contentType = explode(';', $contentTypeRes[0]);
+                $contentTypeVal = explode('/', $contentType[0]);
             } else {
-                $contentTypeVal = explode("/", $contentTypeRes [0]);
+                $contentTypeVal = explode('/', $contentTypeRes[0]);
             }
 
             // Logging Response
@@ -122,18 +122,16 @@ class ApiClient
 
             $converter = SDKConverterFactory::getConverter(strtoupper($contentTypeVal[1]));
             return $converter->responseBodyConverter($res->getBody(), $responseType);
-
         } catch (SDKConversionException $e) {
             $this->logger->error($e->getConverterName());
             $sdkErrorResponse = new SDKErrorResponse($res, $statusCode);
             if ($this->sdkErrorHandler != null) {
                 $this->sdkErrorHandler->handleError($sdkErrorResponse);
             } else {
-                throw new SDKBaseException(ApiClient::ERR_HANDLER_NOT_FOUND);
+                throw new SDKBaseException(self::ERR_HANDLER_NOT_FOUND);
             }
         } catch (Exception $e) {
-
-            if($e instanceof ClientException) {
+            if ($e instanceof ClientException) {
                 $response = $e->getResponse();
                 $message = $e->getResponse()->getBody()->getContents();
                 $statusCode = $response->getStatusCode();
@@ -143,7 +141,7 @@ class ApiClient
                 $statusCode = 400;
             }
 
-            $this->logger->info(ApiClient::ERR_RESPONSE_CODE . ' ' . $message . ' ' . $statusCode);
+            $this->logger->info(self::ERR_RESPONSE_CODE . ' ' . $message . ' ' . $statusCode);
 
             MasterCardSDKLoggingInterceptor::responseLog($url, $response);
 
@@ -152,7 +150,7 @@ class ApiClient
     }
 
     /**
-     * Set user defined APItracker implementation
+     * Set user defined APItracker implementation.
      * @param tracker
      */
     public function setApiTracker($apiTracker)

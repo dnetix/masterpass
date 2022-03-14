@@ -2,17 +2,16 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 /**
- * Error Class Doc Comment
+ * Error Class Doc Comment.
  */
 class Error
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'Description' => 'Description',
         'ReasonCode' => 'ReasonCode',
         'Recoverable' => 'Recoverable',
@@ -21,16 +20,16 @@ class Error
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'description' => 'setDescription',
         'reason_code' => 'setReasonCode',
         'recoverable' => 'setRecoverable',
@@ -39,16 +38,16 @@ class Error
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'description' => 'getDescription',
         'reason_code' => 'getReasonCode',
         'recoverable' => 'getRecoverable',
@@ -57,11 +56,10 @@ class Error
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $description the error description.
@@ -99,25 +97,24 @@ class Error
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->Description = $data["Description"];
-            $this->ReasonCode = $data["ReasonCode"];
-            $this->Recoverable = $data["Recoverable"];
-            $this->Source = $data["Source"];
-            $this->Details = $data["Details"];
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data['ExtensionPoint'] : null;
+            $this->Description = $data['Description'];
+            $this->ReasonCode = $data['ReasonCode'];
+            $this->Recoverable = $data['Recoverable'];
+            $this->Source = $data['Source'];
+            $this->Details = $data['Details'];
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : null;
         }
     }
 
     /**
-     * Gets description
+     * Gets description.
      * @return string
      */
     public function getDescription()
@@ -126,19 +123,18 @@ class Error
     }
 
     /**
-     * Sets description
+     * Sets description.
      * @param string $description the error description.
      * @return $this
      */
     public function setDescription($description)
     {
-
         $this->Description = $description;
         return $this;
     }
 
     /**
-     * Gets reason_code
+     * Gets reason_code.
      * @return string
      */
     public function getReasonCode()
@@ -147,19 +143,18 @@ class Error
     }
 
     /**
-     * Sets reason_code
+     * Sets reason_code.
      * @param string $reason_code the error reason code.
      * @return $this
      */
     public function setReasonCode($reason_code)
     {
-
         $this->ReasonCode = $reason_code;
         return $this;
     }
 
     /**
-     * Gets recoverable
+     * Gets recoverable.
      * @return bool
      */
     public function getRecoverable()
@@ -168,19 +163,18 @@ class Error
     }
 
     /**
-     * Sets recoverable
+     * Sets recoverable.
      * @param bool $recoverable the error recoverable info.
      * @return $this
      */
     public function setRecoverable($recoverable)
     {
-
         $this->Recoverable = $recoverable;
         return $this;
     }
 
     /**
-     * Gets source
+     * Gets source.
      * @return string
      */
     public function getSource()
@@ -189,19 +183,18 @@ class Error
     }
 
     /**
-     * Sets source
+     * Sets source.
      * @param string $source the source of error.
      * @return $this
      */
     public function setSource($source)
     {
-
         $this->Source = $source;
         return $this;
     }
 
     /**
-     * Gets details
+     * Gets details.
      * @return Details
      */
     public function getDetails()
@@ -210,7 +203,7 @@ class Error
     }
 
     /**
-     * Sets details
+     * Sets details.
      * @param Details $details the error details.
      * @return $this
      */
@@ -221,7 +214,7 @@ class Error
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -230,7 +223,7 @@ class Error
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -239,6 +232,4 @@ class Error
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

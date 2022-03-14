@@ -25,17 +25,17 @@ class AccessTokenApi
      */
     public static function create($oauthToken, $oauthVerifier, $configName = null)
     {
-        $path = "/oauth/consumer/v1/access_token";
+        $path = '/oauth/consumer/v1/access_token';
 
         $serviceRequest = new ServiceRequest();
 
-        $serviceRequest->header("oauth_verifier", $oauthVerifier);
-        $serviceRequest->header("oauth_token", $oauthToken);
-        $serviceRequest->contentType("application/xml");
+        $serviceRequest->header('oauth_verifier', $oauthVerifier);
+        $serviceRequest->header('oauth_token', $oauthToken);
+        $serviceRequest->contentType('application/xml');
 
         $apiClient = new ApiClient($configName);
         $apiClient->setApiTracker(new ApiTracker());
         $apiClient->sdkErrorHandler = new MasterpassErrorHandler();
-        return $apiClient->call($path, $serviceRequest, "POST", "AccessTokenResponse");
+        return $apiClient->call($path, $serviceRequest, 'POST', 'AccessTokenResponse');
     }
 }

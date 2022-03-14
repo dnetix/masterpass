@@ -2,17 +2,16 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 /**
- * MerchantTransaction
+ * MerchantTransaction.
  */
 class MerchantTransaction
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'TransactionId' => 'TransactionId',
         'ConsumerKey' => 'ConsumerKey',
         'Currency' => 'Currency',
@@ -25,16 +24,16 @@ class MerchantTransaction
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'transaction_id' => 'setTransactionId',
         'consumer_key' => 'setConsumerKey',
         'currency' => 'setCurrency',
@@ -47,16 +46,16 @@ class MerchantTransaction
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'transaction_id' => 'getTransactionId',
         'consumer_key' => 'getConsumerKey',
         'currency' => 'getCurrency',
@@ -69,11 +68,10 @@ class MerchantTransaction
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $transaction_id the transaction Id.
@@ -94,7 +92,7 @@ class MerchantTransaction
     public $Currency;
 
     /**
-     * $order_amount the transaction order amount, for example, 1500 (for USD 15 transaction amount)
+     * $order_amount the transaction order amount, for example, 1500 (for USD 15 transaction amount).
      * @var int
      */
     public $OrderAmount;
@@ -118,13 +116,13 @@ class MerchantTransaction
     public $ApprovalCode;
 
     /**
-     * $pre_checkout_transaction_id the precheckout transaction id element of the PrecheckoutData.(This is not required for Standard Checkout)
+     * $pre_checkout_transaction_id the precheckout transaction id element of the PrecheckoutData.(This is not required for Standard Checkout).
      * @var string
      */
     public $PreCheckoutTransactionId;
 
     /**
-     * $express_checkout_indicator the express checkout indicator. Set to true for express checkout
+     * $express_checkout_indicator the express checkout indicator. Set to true for express checkout.
      * @var bool
      */
     public $ExpressCheckoutIndicator;
@@ -135,29 +133,28 @@ class MerchantTransaction
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->TransactionId = isset($data["TransactionId"]) ? $data["TransactionId"] : "";
-            $this->ConsumerKey = isset($data["ConsumerKey"]) ? $data["ConsumerKey"] : "";
-            $this->Currency = isset($data["Currency"]) ? $data["Currency"] : "";
-            $this->OrderAmount = isset($data["OrderAmount"]) ? $data["OrderAmount"] : "";
-            $this->PurchaseDate = isset($data["PurchaseDate"]) ? $data["PurchaseDate"] : "";
-            $this->TransactionStatus = isset($data["TransactionStatus"]) ? $data["TransactionStatus"] : "";
-            $this->ApprovalCode = isset($data["ApprovalCode"]) ? $data["ApprovalCode"] : "";
-            $this->PreCheckoutTransactionId = isset($data["PreCheckoutTransactionId"]) ? $data["PreCheckoutTransactionId"] : "";
-            $this->ExpressCheckoutIndicator = isset($data["ExpressCheckoutIndicator"]) ? $data["ExpressCheckoutIndicator"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->TransactionId = isset($data['TransactionId']) ? $data['TransactionId'] : '';
+            $this->ConsumerKey = isset($data['ConsumerKey']) ? $data['ConsumerKey'] : '';
+            $this->Currency = isset($data['Currency']) ? $data['Currency'] : '';
+            $this->OrderAmount = isset($data['OrderAmount']) ? $data['OrderAmount'] : '';
+            $this->PurchaseDate = isset($data['PurchaseDate']) ? $data['PurchaseDate'] : '';
+            $this->TransactionStatus = isset($data['TransactionStatus']) ? $data['TransactionStatus'] : '';
+            $this->ApprovalCode = isset($data['ApprovalCode']) ? $data['ApprovalCode'] : '';
+            $this->PreCheckoutTransactionId = isset($data['PreCheckoutTransactionId']) ? $data['PreCheckoutTransactionId'] : '';
+            $this->ExpressCheckoutIndicator = isset($data['ExpressCheckoutIndicator']) ? $data['ExpressCheckoutIndicator'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets transaction_id
+     * Gets transaction_id.
      * @return string
      */
     public function getTransactionId()
@@ -166,19 +163,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets transaction_id
+     * Sets transaction_id.
      * @param string $transaction_id the transaction Id.
      * @return $this
      */
     public function setTransactionId($transaction_id)
     {
-
         $this->TransactionId = $transaction_id;
         return $this;
     }
 
     /**
-     * Gets consumer_key
+     * Gets consumer_key.
      * @return string
      */
     public function getConsumerKey()
@@ -187,19 +183,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets consumer_key
+     * Sets consumer_key.
      * @param string $consumer_key the consumer key from checkout project.
      * @return $this
      */
     public function setConsumerKey($consumer_key)
     {
-
         $this->ConsumerKey = $consumer_key;
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets currency.
      * @return string
      */
     public function getCurrency()
@@ -208,19 +203,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets currency
+     * Sets currency.
      * @param string $currency the currency for the transaction, for example, USD.
      * @return $this
      */
     public function setCurrency($currency)
     {
-
         $this->Currency = $currency;
         return $this;
     }
 
     /**
-     * Gets order_amount
+     * Gets order_amount.
      * @return int
      */
     public function getOrderAmount()
@@ -229,19 +223,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets order_amount
+     * Sets order_amount.
      * @param int $order_amount the transaction order amount, for example, 1500 (for USD 15 transaction amount)
      * @return $this
      */
     public function setOrderAmount($order_amount)
     {
-
         $this->OrderAmount = $order_amount;
         return $this;
     }
 
     /**
-     * Gets purchase_date
+     * Gets purchase_date.
      * @return string
      */
     public function getPurchaseDate()
@@ -250,19 +243,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets purchase_date
+     * Sets purchase_date.
      * @param string $purchase_date the date of purchase.
      * @return $this
      */
     public function setPurchaseDate($purchase_date)
     {
-
         $this->PurchaseDate = $purchase_date;
         return $this;
     }
 
     /**
-     * Gets transaction_status
+     * Gets transaction_status.
      * @return string
      */
     public function getTransactionStatus()
@@ -271,13 +263,13 @@ class MerchantTransaction
     }
 
     /**
-     * Sets transaction_status
+     * Sets transaction_status.
      * @param string $transaction_status the status of transaction. Valid values are, SUCCESS: For approved transaction and FAILURE: For declined transaction.
      * @return $this
      */
     public function setTransactionStatus($transaction_status)
     {
-        $allowed_values = ["Success", "Failure"];
+        $allowed_values = ['Success', 'Failure'];
         if (!in_array($transaction_status, $allowed_values)) {
             throw new \InvalidArgumentException("Invalid value for 'transaction_status', must be one of 'Success', 'Failure'");
         }
@@ -286,7 +278,7 @@ class MerchantTransaction
     }
 
     /**
-     * Gets approval_code
+     * Gets approval_code.
      * @return string
      */
     public function getApprovalCode()
@@ -295,19 +287,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets approval_code
+     * Sets approval_code.
      * @param string $approval_code the six-digit approval code returned by payment API.
      * @return $this
      */
     public function setApprovalCode($approval_code)
     {
-
         $this->ApprovalCode = $approval_code;
         return $this;
     }
 
     /**
-     * Gets pre_checkout_transaction_id
+     * Gets pre_checkout_transaction_id.
      * @return string
      */
     public function getPreCheckoutTransactionId()
@@ -316,19 +307,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets pre_checkout_transaction_id
+     * Sets pre_checkout_transaction_id.
      * @param string $pre_checkout_transaction_id the precheckout transaction id element of the PrecheckoutData.(This is not required for Standard Checkout)
      * @return $this
      */
     public function setPreCheckoutTransactionId($pre_checkout_transaction_id)
     {
-
         $this->PreCheckoutTransactionId = $pre_checkout_transaction_id;
         return $this;
     }
 
     /**
-     * Gets express_checkout_indicator
+     * Gets express_checkout_indicator.
      * @return bool
      */
     public function getExpressCheckoutIndicator()
@@ -337,19 +327,18 @@ class MerchantTransaction
     }
 
     /**
-     * Sets express_checkout_indicator
+     * Sets express_checkout_indicator.
      * @param bool $express_checkout_indicator the express checkout indicator. Set to true for express checkout
      * @return $this
      */
     public function setExpressCheckoutIndicator($express_checkout_indicator)
     {
-
         $this->ExpressCheckoutIndicator = $express_checkout_indicator;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -358,7 +347,7 @@ class MerchantTransaction
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -367,6 +356,4 @@ class MerchantTransaction
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

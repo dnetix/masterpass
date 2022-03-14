@@ -9,17 +9,16 @@ use Dnetix\MasterPass\Model\RequestTokenResponse;
 use Exception;
 
 /**
- * EncodedURLConverter - To convert response from request token api & parse it & return
+ * EncodedURLConverter - To convert response from request token api & parse it & return.
  */
 class EncodedURLConverter implements SDKConverter
 {
-
     public function requestBodyConverter($objRequest)
     {
     }
 
     /**
-     * Generic method for access & request token response object set parameters
+     * Generic method for access & request token response object set parameters.
      * @param array $data
      * @param $responseType
      * @return mixed
@@ -28,44 +27,45 @@ class EncodedURLConverter implements SDKConverter
     {
         //Instantiate the object
         $class = '\Dnetix\MasterPass\Model\\' . $responseType;
-        $resObj = new $class;
+        $resObj = new $class();
 
-        if ($resObj instanceof RequestTokenResponse)
+        if ($resObj instanceof RequestTokenResponse) {
             $resObj->load($data);
-        if ($resObj instanceof AccessTokenResponse)
+        }
+        if ($resObj instanceof AccessTokenResponse) {
             $resObj->load($data);
+        }
 
         return $resObj;
     }
 
     /**
-     * Method used to parse the connection response and return a array of the data
+     * Method used to parse the connection response and return a array of the data.
      */
     public function responseBodyConverter($responseString, $responseType)
     {
         $token = [];
-        foreach (explode("&", $responseString) as $p) {
-            @list($name, $value) = explode("=", $p, 2);
+        foreach (explode('&', $responseString) as $p) {
+            @list($name, $value) = explode('=', $p, 2);
             $token[$name] = urldecode($value);
         }
         try {
             $result = $this->GetTokenResponse($token, $responseType);
             return $result;
         } catch (Exception $e) {
-            throw new SDKConversionException($e, __class__);
+            throw new SDKConversionException($e, __CLASS__);
         }
-
     }
 
     /**
      * Translates a string with underscores
-     * into camel case (e.g. first_name -> firstName)
+     * into camel case (e.g. first_name -> firstName).
      *
      * @param string $str String in underscore format
      * @param bool $capitalise_first_char If true, capitalise the first char in $str
      * @return string $str translated into camel caps
      */
-    function to_camel_case($str, $capitalise_first_char = true)
+    public function to_camel_case($str, $capitalise_first_char = true)
     {
         if ($capitalise_first_char) {
             $str[0] = strtoupper($str[0]);
@@ -73,5 +73,4 @@ class EncodedURLConverter implements SDKConverter
         $func = create_function('$c', 'return strtoupper($c[1]);');
         return preg_replace_callback('/_([a-z])/', $func, $str);
     }
-
 }

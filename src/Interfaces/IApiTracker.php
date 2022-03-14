@@ -14,13 +14,12 @@ namespace Dnetix\MasterPass\Interfaces;
 interface IApiTracker
 {
     /**
-     * Get tracking info to be used in api tracker header
+     * Get tracking info to be used in api tracker header.
      */
     public function getAPITrackingHeader();
 
-
     /**
-     * Get user agent info to be used in api tracker header
+     * Get user agent info to be used in api tracker header.
      */
     public function getUserAgentHeader();
 }

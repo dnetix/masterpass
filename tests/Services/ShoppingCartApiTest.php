@@ -1,19 +1,16 @@
 <?php
 
-
 use Dnetix\MasterPass\Model\ShoppingCart;
 use Dnetix\MasterPass\Model\ShoppingCartItem;
 use Dnetix\MasterPass\Model\ShoppingCartRequest;
 
 class ShoppingCartServiceApiTest extends BaseTestCase
 {
-
-
     public function testShoppingCartServiceApi()
     {
         $client = $this->client();
 
-        $token = $client->requestToken("http://localhost");
+        $token = $client->requestToken('http://localhost');
 
         $shoppingCartRequest = new ShoppingCartRequest([
             'ShoppingCart' => new ShoppingCart([

@@ -1,6 +1,7 @@
 <?php
 
 namespace Dnetix\MasterPass\Model;
+
 use GuzzleHttp\Psr7\Response;
 
 /**
@@ -8,7 +9,6 @@ use GuzzleHttp\Psr7\Response;
  */
 class SDKErrorResponse
 {
-
     private $response = null;
     private $responseCode = 0;
     private $message;
@@ -66,5 +66,4 @@ class SDKErrorResponse
     {
         $this->errorSource = $errorSource;
     }
-
 }

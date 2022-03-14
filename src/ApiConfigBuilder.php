@@ -7,12 +7,11 @@ namespace Dnetix\MasterPass;
  */
 class ApiConfigBuilder
 {
-
     public $hostUrl;
     public $envName;
     public $consumerKey;
     public $privateKey;
-    const ERR_MISSING_DATA = "Missing Required Data ";
+    public const ERR_MISSING_DATA = 'Missing Required Data ';
 
     public function setEnvName($envName)
     {

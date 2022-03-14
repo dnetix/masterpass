@@ -7,7 +7,6 @@ namespace Dnetix\MasterPass\Helper;
  */
 class ServiceRequest
 {
-
     private $headers;
     private $pathParams;
     private $queryParams;
@@ -66,5 +65,4 @@ class ServiceRequest
     {
         $this->contentType = $contentType;
     }
-
 }

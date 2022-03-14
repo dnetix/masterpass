@@ -12,7 +12,6 @@ use Dnetix\MasterPass\Exception\SDKConversionException;
  */
 interface SDKConverter
 {
-
     /**
      * Converts request body to string.
      * @param $object

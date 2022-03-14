@@ -3,7 +3,7 @@
 namespace Dnetix\MasterPass\Model;
 
 /**
- * Holds data relevant to the Access Token and Checkout Resources
+ * Holds data relevant to the Access Token and Checkout Resources.
  */
 class AccessTokenResponse
 {
@@ -33,5 +33,4 @@ class AccessTokenResponse
     {
         return $this->oauth_token_secret;
     }
-
 }

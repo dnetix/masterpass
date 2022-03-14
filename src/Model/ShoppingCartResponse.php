@@ -8,43 +8,43 @@ namespace Dnetix\MasterPass\Model;
 class ShoppingCartResponse
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'OAuthToken' => 'OAuthToken',
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'o_auth_token' => 'setOAuthToken',
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'o_auth_token' => 'getOAuthToken',
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
@@ -61,21 +61,20 @@ class ShoppingCartResponse
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->OAuthToken = isset($data["OAuthToken"]) ? $data["OAuthToken"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->OAuthToken = isset($data['OAuthToken']) ? $data['OAuthToken'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets o_auth_token
+     * Gets o_auth_token.
      * @return string
      */
     public function getOAuthToken()
@@ -84,7 +83,7 @@ class ShoppingCartResponse
     }
 
     /**
-     * Sets o_auth_token
+     * Sets o_auth_token.
      * @param string $o_auth_token the request Token (oauth_token) returned by call to the request_token API.
      * @return $this
      */
@@ -95,7 +94,7 @@ class ShoppingCartResponse
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -104,7 +103,7 @@ class ShoppingCartResponse
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -113,5 +112,4 @@ class ShoppingCartResponse
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Dnetix\MasterPass\Interfaces;
+
 use Dnetix\MasterPass\Model\SDKErrorResponse;
 
 /**
@@ -10,12 +11,10 @@ use Dnetix\MasterPass\Model\SDKErrorResponse;
  */
 interface SDKErrorHandler
 {
-
     /**
      * Return a custom exception to be thrown from ApiClient.
      * @param SDKErrorResponse $sdkErrorResponse
      * @return
      */
     public function handleError($sdkErrorResponse);
-
 }

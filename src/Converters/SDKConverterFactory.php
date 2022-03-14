@@ -6,15 +6,14 @@ use Dnetix\MasterPass\Exception\SDKConversionException;
 
 class SDKConverterFactory
 {
-
     /** @const XML | Check to return XML converter object * */
-    const XML = "XML";
+    public const XML = 'XML';
 
     /** @const JSON | Check to return JSON converter object * */
-    const JSON = "JSON";
+    public const JSON = 'JSON';
 
     /** @const URLENCODED | Check to return URLENCODED converter object * */
-    const URLENCODED = "X-WWW-FORM-URLENCODED";
+    public const URLENCODED = 'X-WWW-FORM-URLENCODED';
 
     public function __construct()
     {
@@ -26,14 +25,14 @@ class SDKConverterFactory
     public static function getConverter($format)
     {
         switch ($format) {
-            case SDKConverterFactory::XML:
+            case self::XML:
                 return new XMLConverter();
-            case SDKConverterFactory::URLENCODED:
+            case self::URLENCODED:
                 return new EncodedURLConverter();
-            case SDKConverterFactory::JSON:
+            case self::JSON:
                 return new JSONConverter();
             default:
-                throw new SDKConversionException("Converter not found for the format " . $format, "Converter not found for $format format");
+                throw new SDKConversionException('Converter not found for the format ' . $format, "Converter not found for $format format");
         }
     }
 }

@@ -8,47 +8,46 @@ namespace Dnetix\MasterPass\Model;
 class PaymentOptionsExtensions
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'Installments' => 'Installments',
         'PaymentAcceptance' => 'PaymentAcceptance',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'installments' => 'setInstallments',
         'payment_acceptance' => 'setPaymentAcceptance',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'installments' => 'getInstallments',
         'payment_acceptance' => 'getPaymentAcceptance',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
-
 
     /**
      * $installments the installments.
@@ -62,21 +61,20 @@ class PaymentOptionsExtensions
      */
     public $PaymentAcceptance;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->Installments = isset($data["Installments"]) ? $data["Installments"] : "";
-            $this->PaymentAcceptance = isset($data["PaymentAcceptance"]) ? $data["PaymentAcceptance"] : "";
+            $this->Installments = isset($data['Installments']) ? $data['Installments'] : '';
+            $this->PaymentAcceptance = isset($data['PaymentAcceptance']) ? $data['PaymentAcceptance'] : '';
         }
     }
 
     /**
-     * Gets installments
+     * Gets installments.
      * @return Installments
      */
     public function getInstallments()
@@ -85,7 +83,7 @@ class PaymentOptionsExtensions
     }
 
     /**
-     * Sets installments
+     * Sets installments.
      * @param Installments $installments the installments.
      * @return $this
      */
@@ -96,7 +94,7 @@ class PaymentOptionsExtensions
     }
 
     /**
-     * Gets payment_acceptance
+     * Gets payment_acceptance.
      * @return PaymentAcceptance
      */
     public function getPaymentAcceptance()
@@ -105,7 +103,7 @@ class PaymentOptionsExtensions
     }
 
     /**
-     * Sets payment_acceptance
+     * Sets payment_acceptance.
      * @param PaymentAcceptance $payment_acceptance the payment acceptance.
      * @return $this
      */
@@ -114,6 +112,4 @@ class PaymentOptionsExtensions
         $this->PaymentAcceptance = $payment_acceptance;
         return $this;
     }
-
 }
-

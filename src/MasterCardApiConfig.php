@@ -6,7 +6,6 @@ use Dnetix\MasterPass\Exception\SDKValidationException;
 
 /**
  * Set required configuration for SDK.
- * @package  MasterCardCoreSDK
  */
 class MasterCardApiConfig
 {
@@ -23,16 +22,16 @@ class MasterCardApiConfig
      */
     public static $productionBuilder;
 
-    const PRODUCTION = "PRODUCTION";
-    const SANDBOX = "SANDBOX";
+    public const PRODUCTION = 'PRODUCTION';
+    public const SANDBOX = 'SANDBOX';
 
-    const SANDBOX_URL = "https://sandbox.api.mastercard.com";
-    const PROD_URL = "https://api.mastercard.com";
+    public const SANDBOX_URL = 'https://sandbox.api.mastercard.com';
+    public const PROD_URL = 'https://api.mastercard.com';
 
-    const BUTTON_SRC_URL = 'https://static.masterpass.com/dyn/img/btn/global/mp_chk_btn_290x068px.svg';
+    public const BUTTON_SRC_URL = 'https://static.masterpass.com/dyn/img/btn/global/mp_chk_btn_290x068px.svg';
 
-    const SCRIPT_SANDBOX_URL = 'https://sandbox.static.masterpass.com/dyn/js/switch/integration/MasterPass.client.js';
-    const SCRIPT_PRODUCTION_URL = 'https://static.masterpass.com/dyn/js/switch/integration/MasterPass.client.js';
+    public const SCRIPT_SANDBOX_URL = 'https://sandbox.static.masterpass.com/dyn/js/switch/integration/MasterPass.client.js';
+    public const SCRIPT_PRODUCTION_URL = 'https://static.masterpass.com/dyn/js/switch/integration/MasterPass.client.js';
 
     public static $configs = [];
     public static $builders = [];
@@ -53,7 +52,7 @@ class MasterCardApiConfig
     }
 
     /**
-     * checking SendBox Checked or Not
+     * checking SendBox Checked or Not.
      */
     public static function isSandBox()
     {
@@ -70,7 +69,7 @@ class MasterCardApiConfig
     }
 
     /**
-     * Setting SendBox status
+     * Setting SendBox status.
      * @param sandbox
      */
     public static function setSandBox($sandbox)
@@ -79,7 +78,7 @@ class MasterCardApiConfig
     }
 
     /**
-     * Get Additional Properties
+     * Get Additional Properties.
      */
     public function getAdditionalProperties()
     {
@@ -87,7 +86,7 @@ class MasterCardApiConfig
     }
 
     /**
-     * Set AdditionalProperties
+     * Set AdditionalProperties.
      * @param additionalProperties
      */
     public function setAdditionalProperties($dataArray)
@@ -113,8 +112,9 @@ class MasterCardApiConfig
 
     public static function scriptUrl()
     {
-        if (self::isSandBox())
+        if (self::isSandBox()) {
             return self::SCRIPT_SANDBOX_URL;
+        }
 
         return self::SCRIPT_PRODUCTION_URL;
     }
@@ -170,4 +170,3 @@ class MasterCardApiConfig
 }
 
 MasterCardApiConfig::init();
-

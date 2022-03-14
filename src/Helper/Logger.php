@@ -4,7 +4,7 @@ namespace Dnetix\MasterPass\Helper;
 
 /**
  * Class Logger
- * Implementing this logger just because the library uses one
+ * Implementing this logger just because the library uses one.
  */
 class Logger implements LoggerContract
 {
@@ -31,14 +31,16 @@ class Logger implements LoggerContract
 
     public function output($message)
     {
-        if (getenv('APP_MP_DEBUG'))
-            print "\n[" . date('c') . "] " . $message . "\n";
+        if (getenv('APP_MP_DEBUG')) {
+            echo "\n[" . date('c') . '] ' . $message . "\n";
+        }
     }
 
     public static function getLogger($logFile = null)
     {
-        if (!self::$logger)
+        if (!self::$logger) {
             self::$logger = new self($logFile);
+        }
 
         return self::$logger;
     }
@@ -47,5 +49,4 @@ class Logger implements LoggerContract
     {
         self::$logger = $logger;
     }
-
 }

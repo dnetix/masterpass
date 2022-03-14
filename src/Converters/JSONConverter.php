@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Dnetix\MasterPass\Converters;
 
 use Dnetix\MasterPass\Exception\SDKConversionException;

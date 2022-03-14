@@ -2,14 +2,13 @@
 
 namespace Dnetix\MasterPass\Model;
 
-
 class Card extends BaseCard
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'BrandId' => 'BrandId',
         'ExpiryMonth' => 'ExpiryMonth',
         'AccountNumber' => 'AccountNumber',
@@ -20,16 +19,16 @@ class Card extends BaseCard
         'ExpiryYear' => 'ExpiryYear',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'brand_id' => 'setBrandId',
         'expiry_month' => 'setExpiryMonth',
         'account_number' => 'setAccountNumber',
@@ -40,16 +39,16 @@ class Card extends BaseCard
         'expiry_year' => 'setExpiryYear',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return parent::setters() + self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'brand_id' => 'getBrandId',
         'expiry_month' => 'getExpiryMonth',
         'account_number' => 'getAccountNumber',
@@ -60,11 +59,10 @@ class Card extends BaseCard
         'expiry_year' => 'getExpiryYear',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return parent::getters() + self::$getters;
     }
-
 
     /**
      * $brand_id the card brand id, for example, master for MasterCard.
@@ -114,31 +112,30 @@ class Card extends BaseCard
      */
     public $ExpiryYear;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct($data = null)
     {
         parent::__construct($data);
         if ($data != null) {
-            if (!is_array($data)){
+            if (!is_array($data)) {
                 $data = (array)$data;
             }
-            $this->BrandId = isset($data["BrandId"]) ? $data["BrandId"] : "";
-            $this->ExpiryMonth = isset($data["ExpiryMonth"]) ? $data["ExpiryMonth"] : "";
-            $this->AccountNumber = isset($data["AccountNumber"]) ? $data["AccountNumber"] : "";
-            $this->CardHolderName = isset($data["CardHolderName"]) ? $data["CardHolderName"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
-            $this->BillingAddress = isset($data["BillingAddress"]) ? $data["BillingAddress"] : "";
-            $this->BrandName = isset($data["BrandName"]) ? $data["BrandName"] : "";
-            $this->ExpiryYear = isset($data["ExpiryYear"]) ? $data["ExpiryYear"] : "";
+            $this->BrandId = isset($data['BrandId']) ? $data['BrandId'] : '';
+            $this->ExpiryMonth = isset($data['ExpiryMonth']) ? $data['ExpiryMonth'] : '';
+            $this->AccountNumber = isset($data['AccountNumber']) ? $data['AccountNumber'] : '';
+            $this->CardHolderName = isset($data['CardHolderName']) ? $data['CardHolderName'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
+            $this->BillingAddress = isset($data['BillingAddress']) ? $data['BillingAddress'] : '';
+            $this->BrandName = isset($data['BrandName']) ? $data['BrandName'] : '';
+            $this->ExpiryYear = isset($data['ExpiryYear']) ? $data['ExpiryYear'] : '';
         }
     }
 
     /**
-     * Gets brand_id
+     * Gets brand_id.
      * @return string
      */
     public function getBrandId()
@@ -147,19 +144,18 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets brand_id
+     * Sets brand_id.
      * @param string $brand_id the card brand id, for example, master for MasterCard.
      * @return $this
      */
     public function setBrandId($brand_id)
     {
-
         $this->BrandId = $brand_id;
         return $this;
     }
 
     /**
-     * Gets expiry_month
+     * Gets expiry_month.
      * @return int
      */
     public function getExpiryMonth()
@@ -168,19 +164,18 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets expiry_month
+     * Sets expiry_month.
      * @param int $expiry_month the expiration month displayed on the payment card.
      * @return $this
      */
     public function setExpiryMonth($expiry_month)
     {
-
         $this->ExpiryMonth = $expiry_month;
         return $this;
     }
 
     /**
-     * Gets account_number
+     * Gets account_number.
      * @return string
      */
     public function getAccountNumber()
@@ -189,19 +184,18 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets account_number
+     * Sets account_number.
      * @param string $account_number the account number.
      * @return $this
      */
     public function setAccountNumber($account_number)
     {
-
         $this->AccountNumber = $account_number;
         return $this;
     }
 
     /**
-     * Gets card_holder_name
+     * Gets card_holder_name.
      * @return string
      */
     public function getCardHolderName()
@@ -210,19 +204,18 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets card_holder_name
+     * Sets card_holder_name.
      * @param string $card_holder_name the cardholder name.
      * @return $this
      */
     public function setCardHolderName($card_holder_name)
     {
-
         $this->CardHolderName = $card_holder_name;
         return $this;
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return CheckoutExtension
      */
     public function getExtensionPoint()
@@ -231,7 +224,7 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param CheckoutExtension $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -242,7 +235,7 @@ class Card extends BaseCard
     }
 
     /**
-     * Gets billing_address
+     * Gets billing_address.
      * @return Address
      */
     public function getBillingAddress()
@@ -254,19 +247,18 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets billing_address
+     * Sets billing_address.
      * @param Address $billing_address the billing address for the card holder.
      * @return $this
      */
     public function setBillingAddress($billing_address)
     {
-
         $this->BillingAddress = $billing_address;
         return $this;
     }
 
     /**
-     * Gets brand_name
+     * Gets brand_name.
      * @return string
      */
     public function getBrandName()
@@ -275,19 +267,18 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets brand_name
+     * Sets brand_name.
      * @param string $brand_name the card brand name, for example, MasterCard.
      * @return $this
      */
     public function setBrandName($brand_name)
     {
-
         $this->BrandName = $brand_name;
         return $this;
     }
 
     /**
-     * Gets expiry_year
+     * Gets expiry_year.
      * @return int
      */
     public function getExpiryYear()
@@ -296,7 +287,7 @@ class Card extends BaseCard
     }
 
     /**
-     * Sets expiry_year
+     * Sets expiry_year.
      * @param int $expiry_year the expiration year displayed on the payment card.
      * @return $this
      */
@@ -340,6 +331,4 @@ class Card extends BaseCard
     {
         return substr($this->accountNumber(), -4);
     }
-
 }
-

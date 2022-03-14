@@ -8,40 +8,40 @@ namespace Dnetix\MasterPass\Model;
 class Issuers
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'Issuer' => 'Issuer',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'issuer' => 'setIssuer',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'issuer' => 'getIssuer',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
@@ -53,18 +53,18 @@ class Issuers
     public $Issuer;
 
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->Issuer = isset($data["Issuer"]) ? $data["Issuer"] : "";
+            $this->Issuer = isset($data['Issuer']) ? $data['Issuer'] : '';
         }
     }
 
     /**
-     * Gets issuer
+     * Gets issuer.
      * @return string
      */
     public function getIssuer()
@@ -73,7 +73,7 @@ class Issuers
     }
 
     /**
-     * Sets issuer
+     * Sets issuer.
      * @param string $issuer the issuer detail.
      * @return $this
      */
@@ -82,6 +82,4 @@ class Issuers
         $this->Issuer = $issuer;
         return $this;
     }
-
 }
-

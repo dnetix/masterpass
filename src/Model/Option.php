@@ -8,53 +8,52 @@ namespace Dnetix\MasterPass\Model;
 class Option
 {
     /**
-     * Array of attributes where the key is the local name, and the value is the original name
+     * Array of attributes where the key is the local name, and the value is the original name.
      * @var string[]
      */
-    static $attributeMap = [
+    public static $attributeMap = [
         'BrandId' => 'BrandId',
         'AcceptanceType' => 'AcceptanceType',
         'ExtensionPoint' => 'ExtensionPoint',
     ];
 
-    static function attributeMap()
+    public static function attributeMap()
     {
         return self::$attributeMap;
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      * @var string[]
      */
-    static $setters = [
+    public static $setters = [
         'brand_id' => 'setBrandId',
         'acceptance_type' => 'setAcceptanceType',
         'extension_point' => 'setExtensionPoint',
     ];
 
-    static function setters()
+    public static function setters()
     {
         return self::$setters;
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      * @var string[]
      */
-    static $getters = [
+    public static $getters = [
         'brand_id' => 'getBrandId',
         'acceptance_type' => 'getAcceptanceType',
         'extension_point' => 'getExtensionPoint',
     ];
 
-    static function getters()
+    public static function getters()
     {
         return self::$getters;
     }
 
-
     /**
-     * $brand_id the brand id required for DSRP transactions. Identifies the card brands for which DSRP is desired. Currently, the only valid card ID is: master
+     * $brand_id the brand id required for DSRP transactions. Identifies the card brands for which DSRP is desired. Currently, the only valid card ID is: master.
      * @var string
      */
     public $BrandId;
@@ -71,23 +70,21 @@ class Option
      */
     public $ExtensionPoint;
 
-
     /**
-     * Constructor
+     * Constructor.
      * @param mixed[] $data Associated array of property value initalizing the model
      */
     public function __construct(array $data = null)
     {
-
         if ($data != null) {
-            $this->BrandId = isset($data["BrandId"]) ? $data["BrandId"] : "";
-            $this->AcceptanceType = isset($data["AcceptanceType"]) ? $data["AcceptanceType"] : "";
-            $this->ExtensionPoint = isset($data["ExtensionPoint"]) ? $data["ExtensionPoint"] : "";
+            $this->BrandId = isset($data['BrandId']) ? $data['BrandId'] : '';
+            $this->AcceptanceType = isset($data['AcceptanceType']) ? $data['AcceptanceType'] : '';
+            $this->ExtensionPoint = isset($data['ExtensionPoint']) ? $data['ExtensionPoint'] : '';
         }
     }
 
     /**
-     * Gets brand_id
+     * Gets brand_id.
      * @return string
      */
     public function getBrandId()
@@ -96,7 +93,7 @@ class Option
     }
 
     /**
-     * Sets brand_id
+     * Sets brand_id.
      * @param string $brand_id the brand id required for DSRP transactions. Identifies the card brands for which DSRP is desired. Currently, the only valid card ID is: master
      * @return $this
      */
@@ -107,7 +104,7 @@ class Option
     }
 
     /**
-     * Gets acceptance_type
+     * Gets acceptance_type.
      * @return string
      */
     public function getAcceptanceType()
@@ -116,13 +113,13 @@ class Option
     }
 
     /**
-     * Sets acceptance_type
+     * Sets acceptance_type.
      * @param string $acceptance_type the acceptance type required for DSRPtransactions. Indicates the type(s) of cryptograms the merchant or service provider can accept. Valid types are: UCAF and/or ICC (see descriptions that follow). MasterPass passes the most secure selection (ICC) if both acceptance types are indicated.
      * @return $this
      */
     public function setAcceptanceType($acceptance_type)
     {
-        $allowed_values = ["NONE", "ICC", "UCAF"];
+        $allowed_values = ['NONE', 'ICC', 'UCAF'];
         if (!in_array($acceptance_type, $allowed_values)) {
             throw new \InvalidArgumentException("Invalid value for 'acceptance_type', must be one of 'NONE', 'ICC', 'UCAF'");
         }
@@ -131,7 +128,7 @@ class Option
     }
 
     /**
-     * Gets extension_point
+     * Gets extension_point.
      * @return ExtensionPoint
      */
     public function getExtensionPoint()
@@ -140,7 +137,7 @@ class Option
     }
 
     /**
-     * Sets extension_point
+     * Sets extension_point.
      * @param ExtensionPoint $extension_point the ExtensionPoint for future enhancement.
      * @return $this
      */
@@ -149,6 +146,4 @@ class Option
         $this->ExtensionPoint = $extension_point;
         return $this;
     }
-
 }
-

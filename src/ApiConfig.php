@@ -60,5 +60,4 @@ class ApiConfig
     {
         return $this->privateKey;
     }
-
 }
