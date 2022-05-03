@@ -21,7 +21,7 @@ class AccessTokenApi
      * @param $oauthToken
      * @param $oauthVerifier
      * @param null $configName
-     * @return AccessTokenResponse
+     * @return AccessTokenResponse|null
      */
     public static function create($oauthToken, $oauthVerifier, $configName = null)
     {

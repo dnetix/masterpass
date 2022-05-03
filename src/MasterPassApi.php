@@ -22,7 +22,7 @@ class MasterPassApi
     /**
      * Request a new oauth token in order to use later on.
      * @param string $callbackUrl
-     * @return RequestTokenResponse
+     * @return RequestTokenResponse|null
      */
     public function requestToken($callbackUrl)
     {
@@ -51,7 +51,7 @@ class MasterPassApi
      * Receives the values from the checkout information and retrieves a token to show the information.
      * @param string $requestToken
      * @param string $verifierToken
-     * @return AccessTokenResponse
+     * @return AccessTokenResponse|null
      */
     public function accessToken($requestToken, $verifierToken)
     {
@@ -61,7 +61,7 @@ class MasterPassApi
     /**
      * Reports the state of the transaction used with MasterPass.
      * @param MerchantTransactions $merchantTransactions
-     * @return MerchantTransactions
+     * @return MerchantTransactions|null
      */
     public function notifyTransaction(MerchantTransactions $merchantTransactions)
     {
