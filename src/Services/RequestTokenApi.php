@@ -19,7 +19,7 @@ class RequestTokenApi
      * your site/app.
      * @param $oauthCallbackURL
      * @param null $configName
-     * @return RequestTokenResponse
+     * @return RequestTokenResponse|null
      */
     public static function create($oauthCallbackURL, $configName = null)
     {
